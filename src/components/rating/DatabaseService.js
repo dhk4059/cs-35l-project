@@ -11,7 +11,7 @@ const DatabaseService = () => {
 
   const changeRating = (num) => {
     console.log(num)
-    update(ref(db, 'stars'), {
+    update(ref(db, 'housing'), {
       ratings: totalRating + num,
       total: totalReviewers + 1,
     })
