@@ -1,6 +1,13 @@
+import { Container } from 'react-bootstrap'
+
 const PersonalListService = () => {
   return (
-    <div>PersonalListService</div>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: '100vh' }}
+    >
+      PersonalListService
+    </Container>
   )
 }
 
