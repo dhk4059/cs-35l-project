@@ -23,7 +23,7 @@ const DatabaseService = () => {
   }
 
   const resetRating = () => {
-    update(ref(db, 'stars'), {
+    update(ref(db, 'housing'), {
       ratings: 0,
       total: 0,
     })
@@ -33,7 +33,7 @@ const DatabaseService = () => {
     setOtherRating('')
   }
 
-  onValue(ref(db, 'stars'), (snapshot) => {
+  onValue(ref(db, 'housing'), (snapshot) => {
     const data = snapshot.val()
     totalRating = data['ratings']
     setTotalReviewers(data['total'])
