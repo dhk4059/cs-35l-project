@@ -9,11 +9,13 @@ import {
   orderBy,
   query,
 } from 'firebase/firestore'
+import Loading from './Loading'
 
 const FirestoreService = () => {
   const [userReview, setReview] = useState('')
   const [allReviews, setAllReviews] = useState([])
   const ref = collection(firestore, 'reviews')
+  const [isLoading, setLoading] = useState(true)
 
   const writeReview = async () => {
     if (userReview.length > 0) {
@@ -30,16 +32,21 @@ const FirestoreService = () => {
   }
 
   useEffect(() => {
+    
     const getUsers = async () => {
       const data = await getDocs(
         query(collection(firestore, 'reviews'), orderBy('timestamp', 'desc')),
       )
       setAllReviews(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      setLoading(false)
     }
 
     getUsers()
   }, [])
 
+  if (isLoading) {
+    return <Loading></Loading>
+  }
   return (
     <Container className="justify-content-center" style={{ minHeight: '60vh' }}>
       <center>

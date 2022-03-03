@@ -3,11 +3,13 @@ import { onValue, ref } from 'firebase/database'
 import { useEffect, useState } from 'react'
 import { Card, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Loading from '../Loading'
 
 const HousingPage = () => {
   const [hasData, setHasData] = useState(0)
   const [data, setData] = useState([])
   const [keys, setKeys] = useState([])
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     onValue(ref(db, 'ratings'), (snapshot) => {
@@ -22,10 +24,14 @@ const HousingPage = () => {
       setKeys(housingKeys)
       console.log(housing)
       console.log(housingKeys)
+      setLoading(false)
     })
     return () => {}
   }, [])
 
+  if (isLoading) {
+    return <Loading></Loading>
+  }
   return (
     <Container
       className="d-flex justify-content-center"
@@ -68,7 +74,7 @@ const HousingPage = () => {
                     <center>
                       <Link
                         style={{ textDecoration: 'none' }}
-                        to={'/database-test/' + keys[idx]}
+                        to={'/residential-buildings/' + keys[idx]}
                       >
                         <h4>{attr['title'] + ' Page'}</h4>
                       </Link>
