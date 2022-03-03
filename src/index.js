@@ -10,6 +10,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './util/firebaseConfig'
 import PersonalListService from './components/PersonalListService'
 import HousingPage from './components/rating/HousingPage'
+import DatabaseService from './components/rating/DatabaseService'
 
 onAuthStateChanged(auth, (currentUser) => {
   ReactDOM.render(
@@ -18,6 +19,10 @@ onAuthStateChanged(auth, (currentUser) => {
         <Routes>
           <Route path="/" element={<App user={currentUser} />}>
             <Route path="database-test" element={<HousingPage />}></Route>
+            <Route
+              path="database-test/:id"
+              element={<DatabaseService />}
+            ></Route>
             <Route path="firestore-test" element={<FirestoreService />}></Route>
             <Route
               path="filtersearch-test"

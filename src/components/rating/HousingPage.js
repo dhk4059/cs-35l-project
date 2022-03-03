@@ -23,6 +23,7 @@ const HousingPage = () => {
       console.log(housing)
       console.log(housingKeys)
     })
+    return () => {}
   }, [])
 
   return (
@@ -67,7 +68,7 @@ const HousingPage = () => {
                     <center>
                       <Link
                         style={{ textDecoration: 'none' }}
-                        to={'/' + keys[idx] + '-test'}
+                        to={'/database-test/' + keys[idx]}
                       >
                         <h4>{attr['title'] + ' Page'}</h4>
                       </Link>
