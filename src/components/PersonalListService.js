@@ -14,12 +14,31 @@ const PersonalListService = () => {
   console.log(user.email)
   console.log(user.uid)
 
+  // const changeRating = (num) => {
+  //   console.log(num)
+  //   update(ref(db, 'housing/' + params.id + '/' + filter), {
+  //     ratingSum: ratingSum + num,
+  //     totalReviewers: totalReviewers + 1,
+  //   })
+
+  //   set(
+  //     ref(db, 'ratings/' + params.id + '/' + filter),
+  //     parseFloat((ratingSum + num) / (totalReviewers + 1)).toFixed(2),
+  //   )
+
+  //   setYourRating('You rated ' + num + ' stars')
+  //   setOtherRating(
+  //     totalReviewers + 1 + ' have rated with a total rating of ' + ratingSum,
+  //   )
+  // }
+
   useEffect(() => {
     onValue(ref(db, 'userPrefs/' + user.uid), (snapshot) => {
       try {
-        const data = snapshot.val()
+        const data = snapshot.size
 
         console.log(data)
+        setPrefs(data)
         setLoading(false)
         // setHasData(true)
       } catch (e) {
@@ -40,45 +59,46 @@ const PersonalListService = () => {
         <Col md={5}>
           <h2 className="text-center">User Housing Preferences List:</h2>
         </Col>
-        <Col md={{ offset: 5, span: 2 }}>
-          <h2>Hello</h2>
+        <Col md={{ offset: 4, span: 3 }}>
+          {prefs.size !== 0 ? <h2>Dropdown</h2> : null}
         </Col>
       </Row>
       <br />
       <br />
-      <br />
-      <div>
-        {hasData ? (
-          prefs.map((idx) => <Container>{prefs[idx]}</Container>)
-        ) : (
-          <div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-          </div>
-        )}
+      <br />{' '}
+      <div className="d-flex align-items-center justify-content-center">
+        {/* <Row>
+            <Col> */}
+        <center>
+          <Button style={{ width: '35vh' }}>
+            <h2 className="text-center">View List</h2>
+          </Button>
+        </center>
+        {/* </Col>
+            <Col> */}
+        <center>
+          <Button style={{ width: '35vh' }}>
+            <h2 className="text-center">View List</h2>
+          </Button>
+        </center>
+        {/* </Col>
+          </Row> */}
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
       <center>
-        <Button>
-          <h2>Create List</h2>
-        </Button>
+        <div
+          className="d-flex align-items-center justify-content-center"
+          style={{
+            width: '70vh',
+            height: '70vh',
+            backgroundColor: 'lightblue',
+          }}
+        >
+          {hasData ? (
+            prefs.map((idx) => <Container>{prefs[idx]}</Container>)
+          ) : (
+            <h1>Make a List!</h1>
+          )}
+        </div>
       </center>
     </Container>
   )
