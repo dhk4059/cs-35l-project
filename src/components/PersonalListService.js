@@ -4,7 +4,7 @@ const PersonalListService = () => {
   return (
     <Container
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: '75vh' }}
     >
       PersonalListService
     </Container>
