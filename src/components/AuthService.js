@@ -123,10 +123,6 @@ const AuthService = () => {
         <br />
         <br />
         <br />
-        <h5 className="text-center">{'Current User: ' + user?.email}</h5>
-        <br />
-        <br />
-        <br />
         <br />
         <div className="text-center">
           <Button variant="secondary" onClick={logout}>
