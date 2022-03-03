@@ -1,47 +1,54 @@
-import { useState } from 'react'
-import { Container, Button, Row, Col } from 'react-bootstrap'
+import { useEffect, useState } from 'react'
+import {
+  Container,
+  Button,
+  Row,
+  Col,
+  Dropdown,
+  DropdownButton,
+} from 'react-bootstrap'
 import { db } from '../../util/firebaseConfig'
-import { onValue, ref, update } from 'firebase/database'
+import { onValue, ref, set, update } from 'firebase/database'
+import { useParams } from 'react-router-dom'
 
 const DatabaseService = () => {
-  var [totalRating, setTotalRating] = useState(0)
+  var [ratingSum, setRatingSum] = useState(0)
   var [totalReviewers, setTotalReviewers] = useState(0)
   const [yourRating, setYourRating] = useState('')
   const [otherRating, setOtherRating] = useState('')
+  const [filter, setFilter] = useState('overallRating')
+  const params = useParams()
 
   const changeRating = (num) => {
     console.log(num)
-    update(ref(db, 'stars'), {
-      ratings: totalRating + num,
-      total: totalReviewers + 1,
+    update(ref(db, 'housing/' + params.id + '/' + filter), {
+      ratingSum: ratingSum + num,
+      totalReviewers: totalReviewers + 1,
     })
+
+    set(
+      ref(db, 'ratings/' + params.id + '/' + filter),
+      parseFloat((ratingSum + num) / (totalReviewers + 1)).toFixed(2),
+    )
 
     setYourRating('You rated ' + num + ' stars')
     setOtherRating(
-      totalReviewers + ' have rated with a total rating of ' + totalRating,
+      totalReviewers + 1 + ' have rated with a total rating of ' + ratingSum,
     )
   }
 
-  const resetRating = () => {
-    update(ref(db, 'housing'), {
-      ratings: 0,
-      total: 0,
+  useEffect(() => {
+    onValue(ref(db, 'housing/' + params.id + '/' + filter), (snapshot) => {
+      const data = snapshot.val()
+      setRatingSum(data['ratingSum'])
+      setTotalReviewers(data['totalReviewers'])
+      console.log(data)
     })
-    setTotalRating(0)
-    setTotalReviewers(0)
-    setYourRating('')
-    setOtherRating('')
-  }
-
-  onValue(ref(db, 'housing'), (snapshot) => {
-    const data = snapshot.val()
-    totalRating = data['ratings']
-    setTotalReviewers(data['total'])
-    console.log('hello')
-  })
+    return () => {}
+  }, [params.id, filter])
 
   return (
-    <Container className="justify-content-center" style={{ minHeight: '50vh' }}>
+    <Container className="justify-content-center" style={{ minHeight: '75vh' }}>
       <center>
         <h1>This star rating uses Firebase Database</h1>
         <br />
@@ -77,30 +84,48 @@ const DatabaseService = () => {
         </Row>
         <br />
         <br />
+        <DropdownButton
+          id="dropdown-basic-button"
+          title="Filter"
+          menuVariant="dark"
+        >
+          <Dropdown.Item onClick={() => setFilter('overallRating')}>
+            <h3>Overall Rating</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('essentialsQuality')}>
+            <h3>Quality of Essentials</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('foodAccess')}>
+            <h3>Access to Food</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('noiseLevel')}>
+            <h3>Noise Level</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('parkingProximity')}>
+            <h3>Proximity to Parking</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('uclaProximity')}>
+            <h3>Proximity to Campus</h3>
+          </Dropdown.Item>
+        </DropdownButton>
+        <br />
         <br />
         <br />
         <h1>Current Rating:</h1>
         <h2>
           {totalReviewers > 0
-            ? parseFloat(totalRating / totalReviewers).toFixed(2)
-            : 0}
+            ? parseFloat(ratingSum / totalReviewers).toFixed(2)
+            : null}
         </h2>
         <br />
         <br />
+        <h1>Current Filter:</h1>
+        <h2>{filter}</h2>
         <br />
         <br />
         <br />
         <h3>{yourRating}</h3>
         <h3>{otherRating}</h3>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Button onClick={resetRating}>
-          <h2>Reset Rating</h2>
-        </Button>
       </center>
     </Container>
   )
