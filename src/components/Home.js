@@ -28,7 +28,7 @@ const Home = () => {
           <nav style={{ borderBottom: 'solid 3px', paddingBottom: '1rem' }}>
             <Row>
               <Col>
-                <Link to="/database-test">
+                <Link to="/residential-buildings">
                   <h4>Star Ratings</h4>
                 </Link>
               </Col>
