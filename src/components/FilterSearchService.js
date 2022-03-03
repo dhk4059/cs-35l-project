@@ -44,7 +44,7 @@ const FilterSearchService = () => {
         <h3>Choose a Filter:</h3>
         <DropdownButton
           id="dropdown-basic-button"
-          title="Dropdown button"
+          title="Filter"
           menuVariant="dark"
         >
           <Dropdown.Item onClick={() => searchResults('overallRating')}>
