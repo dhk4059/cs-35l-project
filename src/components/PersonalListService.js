@@ -19,9 +19,6 @@ const PersonalListService = () => {
   const [isViewList, setIsViewList] = useState(true)
   const [listNum, setListNum] = useState(0)
 
-  console.log('user email: ' + user.email)
-  console.log('user uid: ' + user.uid)
-
   // const changeRating = (num) => {
   //   console.log(num)
   //   update(ref(db, 'housing/' + params.id + '/' + filter), {
@@ -41,12 +38,12 @@ const PersonalListService = () => {
   // }
 
   useEffect(() => {
-    onValue(ref(db, 'userPrefs/' + user.uid + 's'), (snapshot) => {
+    onValue(ref(db, 'userPrefs/' + user.uid + ''), (snapshot) => {
       try {
         const data = snapshot.val()
 
         console.log(data)
-        console.log('DB CALL');
+        console.log('DB CALL')
         setPrefs(data)
         setLoading(false)
         setHasPref(true)

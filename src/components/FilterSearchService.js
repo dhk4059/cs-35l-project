@@ -79,61 +79,61 @@ const FilterSearchService = () => {
                   <Card.Title>
                     <h1>{attr['title']}</h1>
                   </Card.Title>
-                  <Card.Text>
-                    <h3
-                      style={{
-                        color: filter === 'overallRating' ? 'red' : 'black',
-                      }}
-                    >
-                      {'Overall Rating: ' + attr['overallRating']}
-                    </h3>
-                  </Card.Text>
+                  {/* <Card.Text> */}
+                  <h3
+                    style={{
+                      color: filter === 'overallRating' ? 'red' : 'black',
+                    }}
+                  >
+                    {'Overall Rating: ' + attr['overallRating']}
+                  </h3>
+                  {/* </Card.Text> */}
                   <br />
-                  <Card.Text>
-                    <h5
-                      style={{
-                        color: filter === 'essentialsQuality' ? 'red' : 'black',
-                      }}
-                    >
-                      {'Quality of Essentials: ' + attr['essentialsQuality']}
-                    </h5>
-                  </Card.Text>
-                  <Card.Text>
-                    <h5
-                      style={{
-                        color: filter === 'foodAccess' ? 'red' : 'black',
-                      }}
-                    >
-                      {'Access to Food: ' + attr['foodAccess']}
-                    </h5>
-                  </Card.Text>
-                  <Card.Text>
-                    <h5
-                      style={{
-                        color: filter === 'noiseLevel' ? 'red' : 'black',
-                      }}
-                    >
-                      {'Noise Level: ' + attr['noiseLevel']}
-                    </h5>
-                  </Card.Text>
-                  <Card.Text>
-                    <h5
-                      style={{
-                        color: filter === 'parkingProximity' ? 'red' : 'black',
-                      }}
-                    >
-                      {'Proximity to Parking: ' + attr['parkingProximity']}
-                    </h5>
-                  </Card.Text>
-                  <Card.Text>
-                    <h5
-                      style={{
-                        color: filter === 'uclaProximity' ? 'red' : 'black',
-                      }}
-                    >
-                      {'Proximity to Campus: ' + attr['uclaProximity']}
-                    </h5>
-                  </Card.Text>
+                  {/* <Card.Text> */}
+                  <h5
+                    style={{
+                      color: filter === 'essentialsQuality' ? 'red' : 'black',
+                    }}
+                  >
+                    {'Quality of Essentials: ' + attr['essentialsQuality']}
+                  </h5>
+                  {/* </Card.Text> */}
+                  {/* <Card.Text> */}
+                  <h5
+                    style={{
+                      color: filter === 'foodAccess' ? 'red' : 'black',
+                    }}
+                  >
+                    {'Access to Food: ' + attr['foodAccess']}
+                  </h5>
+                  {/* </Card.Text> */}
+                  {/* <Card.Text> */}
+                  <h5
+                    style={{
+                      color: filter === 'noiseLevel' ? 'red' : 'black',
+                    }}
+                  >
+                    {'Noise Level: ' + attr['noiseLevel']}
+                  </h5>
+                  {/* </Card.Text> */}
+                  {/* <Card.Text> */}
+                  <h5
+                    style={{
+                      color: filter === 'parkingProximity' ? 'red' : 'black',
+                    }}
+                  >
+                    {'Proximity to Parking: ' + attr['parkingProximity']}
+                  </h5>
+                  {/* </Card.Text> */}
+                  {/* <Card.Text> */}
+                  <h5
+                    style={{
+                      color: filter === 'uclaProximity' ? 'red' : 'black',
+                    }}
+                  >
+                    {'Proximity to Campus: ' + attr['uclaProximity']}
+                  </h5>
+                  {/* </Card.Text> */}
                 </Card.Body>
               </Card>
             ))
