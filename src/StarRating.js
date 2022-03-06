@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaStar } from "react-icons/fa";
-import { TextField } from '@material-ui/core';
+import { FaStar } from "../react-icons/fa";
+import { TextField } from '../@material-ui/core';
 
 //use "rating" to show what is stored
 
