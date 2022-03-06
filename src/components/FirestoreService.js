@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Container, Form, Button } from 'react-bootstrap'
+// import { IoIosStar } from "react-icons/io"	
+import { Container, Form, Button, Card } from 'react-bootstrap'
 import { firestore } from '../util/firebaseConfig'
+import Col from 'react-bootstrap/Col'	
+import Row from 'react-bootstrap/Row'
 import {
   collection,
   addDoc,
@@ -74,7 +77,36 @@ const FirestoreService = () => {
         {allReviews.map((review) => {
           return (
             <div key={review.id}>
-              <h6>Review: {review.review}</h6>
+              <Card>	
+              <Card.Img variant="top" src="holder.js/100px180" />	
+              <Card.Body>	
+                <Card.Text>	
+                    
+                  <Container>	
+                  <Row>	
+                  <Col sm={4}>	
+                  <Row>accessibility to food</Row>	
+                  {/* <IoIosStar/>	 */}
+                  <Row>proximity to UCLA</Row>	
+                  {/* <IoIosStar/>	 */}
+                  <Row>parking</Row>	
+                  {/* <IoIosStar/>	 */}
+                  <Row>noise level</Row>	
+                  {/* <IoIosStar/>	 */}
+                  <Row>access to essentials</Row>	
+                  {/* <IoIosStar/>	 */}
+                
+                  
+                </Col>	
+                <Col sm={8}>Review: {review.review}</Col>	
+                </Row>	
+                  </Container>	
+                    
+                  
+                  </Card.Text>	
+                </Card.Body>	
+                </Card>	
+  
             </div>
           )
         })}
