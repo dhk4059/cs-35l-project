@@ -34,6 +34,9 @@ const FirestoreService = () => {
     }
   }
 
+ 
+  // TODO: UPDATE PAGE IN REAL TIME WHEN REVIEW SUBMITTED
+  // TODO: DISPLAY DATE OF REVIEW ALONG WITH RATINGS
   useEffect(() => {
     
     const getUsers = async () => {
