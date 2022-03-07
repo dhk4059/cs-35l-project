@@ -13,7 +13,7 @@ import {
   query,
 } from 'firebase/firestore'
 import Loading from './Loading'
-import StarRating from './rating/star-rating.js'
+
 
 const FirestoreService = () => {
   const [userReview, setReview] = useState('')
@@ -60,7 +60,6 @@ const FirestoreService = () => {
         <h1>This review system uses Firebase Firestore</h1>
         <br />
         <br />
-        <StarRating></StarRating>
         <br />
         <h3>Write a Review:</h3>
         <Form.Group controlId="exampleForm.ControlTextarea1">
