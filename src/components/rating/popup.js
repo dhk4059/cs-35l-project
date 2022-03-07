@@ -1,6 +1,7 @@
 import Modal from 'react-bootstrap/Modal'
 import React, { useState } from 'react';
 import { Button} from 'react-bootstrap'
+import Rating from './rating.js'
 
 function Popup() {
     const [show, setShow] = useState(false);
@@ -18,7 +19,9 @@ function Popup() {
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Body>
+            <Rating></Rating>
+          </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
