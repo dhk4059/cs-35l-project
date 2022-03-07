@@ -8,6 +8,9 @@ const Home = () => {
   const logout = async () => {
     await signOut(auth)
   }
+  const goToList = async () => {
+    ;
+  }
 
   return (
     <Container>
@@ -17,7 +20,14 @@ const Home = () => {
           <Col md={4}>
             <h2>Navigation Bar:</h2>
           </Col>
-          <Col md={{ span: 4, offset: 4 }}>
+          <Col md={{ span: 2, offset: 2 }}>
+            <div className="text-center">
+              <Button variant="primary" onClick={goToList}>
+                <h5>Home</h5>
+              </Button>
+            </div>
+          </Col>
+          <Col md={{ span: 4, offset: -2 }}>
             <div className="text-center">
               <Button variant="primary" onClick={logout}>
                 <h5>Log Out</h5>
@@ -29,6 +39,11 @@ const Home = () => {
         <div>
           <nav style={{ borderBottom: 'solid 3px', paddingBottom: '1rem' }}>
             <Row>
+              <Col>
+                <Link to="/buildings-list">
+                  <h4>List of Buildings</h4>
+                </Link>
+              </Col>
               <Col>
                 <Link to="/residential-buildings">
                   <h4>Star Ratings</h4>

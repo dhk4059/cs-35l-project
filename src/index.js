@@ -20,6 +20,10 @@ onAuthStateChanged(auth, (currentUser) => {
         <Routes>
           <Route path="/" element={<App user={currentUser} />}>
             <Route
+              path="buildings-list"
+              element={<HousingPage />}
+            ></Route>
+            <Route
               path="residential-buildings"
               element={<HousingPage />}
             ></Route>
