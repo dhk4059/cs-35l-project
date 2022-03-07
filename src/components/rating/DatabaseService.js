@@ -12,6 +12,7 @@ import { onValue, ref, set, update } from 'firebase/database'
 import { useParams } from 'react-router-dom'
 import UnknownPage from '../UnknownPage'
 import Loading from '../Loading'
+import Popup from './popup.js'
 
 const DatabaseService = () => {
   var [ratingSum, setRatingSum] = useState(0)
@@ -127,6 +128,8 @@ const DatabaseService = () => {
         <br />
         <br />
         <br />
+        <Popup></Popup>
+
         <h1>Current Rating:</h1>
         <h2>
           {totalReviewers > 0
