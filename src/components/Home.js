@@ -2,6 +2,7 @@ import { Link, Outlet } from 'react-router-dom'
 import { Container, Col, Row, Button } from 'react-bootstrap'
 import { signOut } from 'firebase/auth'
 import { auth } from '../util/firebaseConfig'
+import { GiBirdHouse } from "react-icons/gi";
 
 const Home = () => {
   const logout = async () => {
@@ -11,6 +12,7 @@ const Home = () => {
   return (
     <Container>
       <div>
+        <GiBirdHouse />
         <Row className="mt-3">
           <Col md={4}>
             <h2>Navigation Bar:</h2>
@@ -28,7 +30,7 @@ const Home = () => {
           <nav style={{ borderBottom: 'solid 3px', paddingBottom: '1rem' }}>
             <Row>
               <Col>
-                <Link to="/database-test">
+                <Link to="/">
                   <h4>Star Ratings</h4>
                 </Link>
               </Col>

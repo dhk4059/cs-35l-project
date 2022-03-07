@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Container, Form, Button } from 'react-bootstrap'
+import { IoIosStar } from "react-icons/io"	
+import { Container, Form, Button, Card } from 'react-bootstrap'
 import { firestore } from '../util/firebaseConfig'
+import Col from 'react-bootstrap/Col'	
+import Row from 'react-bootstrap/Row'
 import {
   collection,
   addDoc,
@@ -9,11 +12,14 @@ import {
   orderBy,
   query,
 } from 'firebase/firestore'
+import Loading from './Loading'
+import StarRating from './rating/star-rating.js'
 
 const FirestoreService = () => {
   const [userReview, setReview] = useState('')
   const [allReviews, setAllReviews] = useState([])
   const ref = collection(firestore, 'reviews')
+  const [isLoading, setLoading] = useState(true)
 
   const writeReview = async () => {
     if (userReview.length > 0) {
@@ -29,23 +35,32 @@ const FirestoreService = () => {
     }
   }
 
+ 
+  // TODO: UPDATE PAGE IN REAL TIME WHEN REVIEW SUBMITTED
+  // TODO: DISPLAY DATE OF REVIEW ALONG WITH RATINGS
   useEffect(() => {
+    
     const getUsers = async () => {
       const data = await getDocs(
         query(collection(firestore, 'reviews'), orderBy('timestamp', 'desc')),
       )
       setAllReviews(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      setLoading(false)
     }
 
     getUsers()
   }, [])
 
+  if (isLoading) {
+    return <Loading></Loading>
+  }
   return (
     <Container className="justify-content-center" style={{ minHeight: '60vh' }}>
       <center>
         <h1>This review system uses Firebase Firestore</h1>
         <br />
         <br />
+        <StarRating></StarRating>
         <br />
         <h3>Write a Review:</h3>
         <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -67,7 +82,36 @@ const FirestoreService = () => {
         {allReviews.map((review) => {
           return (
             <div key={review.id}>
-              <h6>Review: {review.review}</h6>
+              <Card>	
+              <Card.Img variant="top" src="holder.js/100px180" />	
+              <Card.Body>	
+                <Card.Text>	
+                    
+                  <Container>	
+                  <Row>	
+                  <Col sm={4}>	
+                  <Row>accessibility to food</Row>	
+                  <IoIosStar/>	
+                  <Row>proximity to UCLA</Row>	
+                  <IoIosStar/>	
+                  <Row>parking</Row>	
+                  <IoIosStar/>	
+                  <Row>noise level</Row>	
+                  <IoIosStar/>	
+                  <Row>access to essentials</Row>	
+                  <IoIosStar/>	
+                
+                  
+                </Col>	
+                <Col sm={8}>Review: {review.review}</Col>	
+                </Row>	
+                  </Container>	
+                    
+                  
+                  </Card.Text>	
+                </Card.Body>	
+                </Card>	
+  
             </div>
           )
         })}

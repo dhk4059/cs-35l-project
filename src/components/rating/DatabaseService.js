@@ -10,6 +10,8 @@ import {
 import { db } from '../../util/firebaseConfig'
 import { onValue, ref, set, update } from 'firebase/database'
 import { useParams } from 'react-router-dom'
+import UnknownPage from '../UnknownPage'
+import Loading from '../Loading'
 
 const DatabaseService = () => {
   var [ratingSum, setRatingSum] = useState(0)
@@ -17,6 +19,9 @@ const DatabaseService = () => {
   const [yourRating, setYourRating] = useState('')
   const [otherRating, setOtherRating] = useState('')
   const [filter, setFilter] = useState('overallRating')
+  const [hasData, setHasData] = useState(true)
+  const [isLoading, setLoading] = useState(true)
+  const [title, setTitle] = useState('')
   const params = useParams()
 
   const changeRating = (num) => {
@@ -38,19 +43,30 @@ const DatabaseService = () => {
   }
 
   useEffect(() => {
-    onValue(ref(db, 'housing/' + params.id + '/' + filter), (snapshot) => {
-      const data = snapshot.val()
-      setRatingSum(data['ratingSum'])
-      setTotalReviewers(data['totalReviewers'])
-      console.log(data)
+    onValue(ref(db, 'housing/' + params.id), (snapshot) => {
+      try {
+        const data = snapshot.val()
+        setRatingSum(data[filter]['ratingSum'])
+        setTotalReviewers(data[filter]['totalReviewers'])
+        setTitle(data['title'])
+        setLoading(false)
+        console.log(data)
+      } catch (TypeError) {
+        setHasData(false)
+        setLoading(false)
+        console.log()
+      }
     })
     return () => {}
   }, [params.id, filter])
 
-  return (
+  if (isLoading) {
+    return <Loading></Loading>
+  }
+  return hasData ? (
     <Container className="justify-content-center" style={{ minHeight: '75vh' }}>
       <center>
-        <h1>This star rating uses Firebase Database</h1>
+        <h1>Residential Building: {title}</h1>
         <br />
         <br />
         <br />
@@ -128,6 +144,8 @@ const DatabaseService = () => {
         <h3>{otherRating}</h3>
       </center>
     </Container>
+  ) : (
+    <UnknownPage></UnknownPage>
   )
 }
 
