@@ -30,7 +30,7 @@ const Home = () => {
           <nav style={{ borderBottom: 'solid 3px', paddingBottom: '1rem' }}>
             <Row>
               <Col>
-                <Link to="/residential-buildings">
+                <Link to="/">
                   <h4>Star Ratings</h4>
                 </Link>
               </Col>
