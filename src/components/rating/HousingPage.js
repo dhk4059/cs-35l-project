@@ -35,7 +35,7 @@ const HousingPage = () => {
   return (
     <Container
       className="d-flex justify-content-center"
-      style={{ minHeight: '75vh' }}
+      // style={{ minHeight: '75vh' }}
     >
       <div>
         {hasData
@@ -75,6 +75,8 @@ const HousingPage = () => {
                       <Link
                         style={{ textDecoration: 'none' }}
                         to={'/' + keys[idx]}
+                        // This opens links in a new tab
+                        // target="_blank"
                       >
                         <h4>{attr['title'] + ' Page'}</h4>
                       </Link>

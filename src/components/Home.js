@@ -1,13 +1,13 @@
-import { Link, Outlet } from 'react-router-dom'
-import { Container, Col, Row, Button } from 'react-bootstrap'
-import { signOut } from 'firebase/auth'
-import { auth } from '../util/firebaseConfig'
+import { Link, Outlet } from "react-router-dom";
+import { Container, Col, Row, Button } from "react-bootstrap";
+import { signOut } from "firebase/auth";
+import { auth } from "../util/firebaseConfig";
 import { GiBirdHouse } from "react-icons/gi";
 
 const Home = () => {
   const logout = async () => {
-    await signOut(auth)
-  }
+    await signOut(auth);
+  };
 
   return (
     <Container>
@@ -27,26 +27,46 @@ const Home = () => {
         </Row>
         <p>*In other words, all routing is done below this navigation bar.</p>
         <div>
-          <nav style={{ borderBottom: 'solid 3px', paddingBottom: '1rem' }}>
+          <nav style={{ borderBottom: "solid 3px", paddingBottom: "1rem" }}>
             <Row>
               <Col>
-                <Link to="/">
+                <Link
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
                   <h4>Star Ratings</h4>
                 </Link>
               </Col>
               <Col>
-                <Link to="/firestore-test">
+                <Link
+                  to="/firestore-test"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
                   <h4>Written Reviews</h4>
                 </Link>
               </Col>
               <Col>
-                <Link to="/filtersearch-test">
+                <Link
+                  to="/filtersearch-test"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
                   <h4>Filter Search</h4>
                 </Link>
               </Col>
               <Col>
-                <Link to="/personallist-test">
-                  <h4>Personal List</h4>
+                <Link
+                  to="/personallist-test"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                F>
+                  <h4>Preferred Housing</h4>
                 </Link>
               </Col>
             </Row>
@@ -57,7 +77,7 @@ const Home = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
