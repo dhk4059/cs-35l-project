@@ -65,7 +65,7 @@ const Home = () => {
                   style={{
                     textDecoration: "none",
                   }}
-                F>
+                >
                   <h4>Preferred Housing</h4>
                 </Link>
               </Col>
