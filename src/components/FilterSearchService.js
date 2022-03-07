@@ -79,7 +79,6 @@ const FilterSearchService = () => {
                   <Card.Title>
                     <h1>{attr['title']}</h1>
                   </Card.Title>
-                  {/* <Card.Text> */}
                   <h3
                     style={{
                       color: filter === 'overallRating' ? 'red' : 'black',
@@ -87,9 +86,7 @@ const FilterSearchService = () => {
                   >
                     {'Overall Rating: ' + attr['overallRating']}
                   </h3>
-                  {/* </Card.Text> */}
                   <br />
-                  {/* <Card.Text> */}
                   <h5
                     style={{
                       color: filter === 'essentialsQuality' ? 'red' : 'black',
@@ -97,8 +94,6 @@ const FilterSearchService = () => {
                   >
                     {'Quality of Essentials: ' + attr['essentialsQuality']}
                   </h5>
-                  {/* </Card.Text> */}
-                  {/* <Card.Text> */}
                   <h5
                     style={{
                       color: filter === 'foodAccess' ? 'red' : 'black',
@@ -106,8 +101,6 @@ const FilterSearchService = () => {
                   >
                     {'Access to Food: ' + attr['foodAccess']}
                   </h5>
-                  {/* </Card.Text> */}
-                  {/* <Card.Text> */}
                   <h5
                     style={{
                       color: filter === 'noiseLevel' ? 'red' : 'black',
@@ -115,8 +108,6 @@ const FilterSearchService = () => {
                   >
                     {'Noise Level: ' + attr['noiseLevel']}
                   </h5>
-                  {/* </Card.Text> */}
-                  {/* <Card.Text> */}
                   <h5
                     style={{
                       color: filter === 'parkingProximity' ? 'red' : 'black',
@@ -124,8 +115,6 @@ const FilterSearchService = () => {
                   >
                     {'Proximity to Parking: ' + attr['parkingProximity']}
                   </h5>
-                  {/* </Card.Text> */}
-                  {/* <Card.Text> */}
                   <h5
                     style={{
                       color: filter === 'uclaProximity' ? 'red' : 'black',
@@ -133,7 +122,6 @@ const FilterSearchService = () => {
                   >
                     {'Proximity to Campus: ' + attr['uclaProximity']}
                   </h5>
-                  {/* </Card.Text> */}
                 </Card.Body>
               </Card>
             ))
