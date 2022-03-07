@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import { IoIosStar } from "react-icons/io"	
+import { IoIosStar } from "react-icons/io"	
 import { Container, Form, Button, Card } from 'react-bootstrap'
 import { firestore } from '../util/firebaseConfig'
 import Col from 'react-bootstrap/Col'	
@@ -89,15 +89,15 @@ const FirestoreService = () => {
                   <Row>	
                   <Col sm={4}>	
                   <Row>accessibility to food</Row>	
-                  {/* <IoIosStar/>	 */}
+                  <IoIosStar/>	
                   <Row>proximity to UCLA</Row>	
-                  {/* <IoIosStar/>	 */}
+                  <IoIosStar/>	
                   <Row>parking</Row>	
-                  {/* <IoIosStar/>	 */}
+                  <IoIosStar/>	
                   <Row>noise level</Row>	
-                  {/* <IoIosStar/>	 */}
+                  <IoIosStar/>	
                   <Row>access to essentials</Row>	
-                  {/* <IoIosStar/>	 */}
+                  <IoIosStar/>	
                 
                   
                 </Col>	
