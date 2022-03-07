@@ -21,19 +21,19 @@ const FirestoreService = () => {
   const ref = collection(firestore, 'reviews')
   const [isLoading, setLoading] = useState(true)
 
-  const writeReview = async () => {
-    if (userReview.length > 0) {
-      try {
-        const docRef = await addDoc(ref, {
-          review: userReview,
-          timestamp: serverTimestamp(),
-        })
-        console.log('document written with id: ', docRef.id)
-      } catch (e) {
-        console.log(e)
-      }
-    }
-  }
+  // const writeReview = async () => {
+  //   if (userReview.length > 0) {
+  //     try {
+  //       const docRef = await addDoc(ref, {
+  //         review: userReview,
+  //         timestamp: serverTimestamp(),
+  //       })
+  //       console.log('document written with id: ', docRef.id)
+  //     } catch (e) {
+  //       console.log(e)
+  //     }
+  //   }
+  // }
 
  
   // TODO: UPDATE PAGE IN REAL TIME WHEN REVIEW SUBMITTED

@@ -17,7 +17,7 @@ function Popup() {
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Leave review</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Rating></Rating>
