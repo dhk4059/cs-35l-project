@@ -21,6 +21,7 @@ const DatabaseService = () => {
   const [filter, setFilter] = useState('overallRating')
   const [hasData, setHasData] = useState(true)
   const [isLoading, setLoading] = useState(true)
+  const [title, setTitle] = useState('')
   const params = useParams()
 
   const changeRating = (num) => {
@@ -42,11 +43,12 @@ const DatabaseService = () => {
   }
 
   useEffect(() => {
-    onValue(ref(db, 'housing/' + params.id + '/' + filter), (snapshot) => {
+    onValue(ref(db, 'housing/' + params.id), (snapshot) => {
       try {
         const data = snapshot.val()
-        setRatingSum(data['ratingSum'])
-        setTotalReviewers(data['totalReviewers'])
+        setRatingSum(data[filter]['ratingSum'])
+        setTotalReviewers(data[filter]['totalReviewers'])
+        setTitle(data['title'])
         setLoading(false)
         console.log(data)
       } catch (TypeError) {
@@ -64,7 +66,7 @@ const DatabaseService = () => {
   return hasData ? (
     <Container className="justify-content-center" style={{ minHeight: '75vh' }}>
       <center>
-        <h1>This star rating uses Firebase Database</h1>
+        <h1>Residential Building: {title}</h1>
         <br />
         <br />
         <br />

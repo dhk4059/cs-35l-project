@@ -74,7 +74,7 @@ const HousingPage = () => {
                     <center>
                       <Link
                         style={{ textDecoration: 'none' }}
-                        to={'/residential-buildings/' + keys[idx]}
+                        to={'/' + keys[idx]}
                       >
                         <h4>{attr['title'] + ' Page'}</h4>
                       </Link>
