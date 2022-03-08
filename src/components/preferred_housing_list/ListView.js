@@ -20,6 +20,9 @@ const ListView = (props) => {
   const columnOrder = props.columnOrder;
 
   useEffect(() => {
+    // if (props.isMakeDisabled) {
+    //   props.disableMakeList();
+    // }
     if (props.choice) {
       setKeyData([props.prefs, props.housingData]);
     } else {
@@ -31,7 +34,7 @@ const ListView = (props) => {
     props.choice,
     props.housingData,
     props.isMakeDisabled,
-    props.makePrefs
+    props.makePrefs,
   ]);
 
   const onDragEnd = (result) => {
@@ -59,13 +62,11 @@ const ListView = (props) => {
     if (start === end) {
       columns[source.droppableId].splice(destination.index, 0, draggableId);
     } else {
-      if (destination.droppableId !== "trash") {
-        columns[destination.droppableId].splice(
-          destination.index,
-          0,
-          draggableId
-        );
-      }
+      columns[destination.droppableId].splice(
+        destination.index,
+        0,
+        draggableId
+      );
     }
     console.log(columns[0]);
     props.showButton();
@@ -82,7 +83,7 @@ const ListView = (props) => {
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd} >
+    <DragDropContext onDragEnd={onDragEnd}>
       <div>
         <div style={{ display: "flex" }}>
           {columnOrder.map((columnID) => {
