@@ -35,33 +35,35 @@ const BuildingsList = () => {
   }
 
   return (
-      <center>
-        <img src="https://external-preview.redd.it/ZvJ-OZpSX3XQ1DsVzTyJ8qMl0fl95JxOrzma5dvcyJM.jpg?width=640&crop=smart&auto=webp&s=3f1f667ecc3c818a1cbe86897178f8b4c31b0794"
-        alt="Hill map" width = "960" height = "650">
-        </img>
+   
+   
+   <center>
+      <img src="https://external-preview.redd.it/ZvJ-OZpSX3XQ1DsVzTyJ8qMl0fl95JxOrzma5dvcyJM.jpg?width=640&crop=smart&auto=webp&s=3f1f667ecc3c818a1cbe86897178f8b4c31b0794"
+      alt="Hill map" width = "960" height = "650">
+      </img>
 
-        <Container
-        className="d-flex justify-content-center"
-        style={{ minHeight: '75vh' }}
-        >
-          <div>
-          {hasData ? data.map((attr, idx) => (
-                                        
-            <div style={{ border: '3px solid', width: '300px' }}>
-              <center>
-                <Link
-                  style={{ textDecoration: 'none' }}
-                  to={'/residential-buildings/' + keys[idx]}
-                >
-                  <h4>{attr['title'] + ' Page'}</h4>
-                </Link>
-              </center>
-            </div>
-            
-          )) : null}
+      <Container
+      className="d-flex justify-content-center"
+      style={{ minHeight: '75vh' }}
+      >
+        <div style={{marginTop: "50px"}}>
+        {hasData ? data.map((attr, idx) => (
+                                      
+          <div style={{ border: '1px solid', width: '300px' }}>
+            <center>
+              <Link
+                style={{ textDecoration: 'none' }}
+                to={'/residential-buildings/' + keys[idx]}
+              >
+                <h4>{attr['title'] + ' Page'}</h4>
+              </Link>
+            </center>
           </div>
-        </Container>
-      </center>
+
+        )) : null}
+        </div>
+      </Container>
+    </center>
   )
 }
 

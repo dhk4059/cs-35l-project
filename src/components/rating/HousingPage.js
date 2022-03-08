@@ -45,7 +45,7 @@ const HousingPage = () => {
                 key={idx}
                 style={{
                   width: '25rem',
-                  height: '25rem',
+                  height: '22rem',
                   border: '3px solid',
                 }}
               >
@@ -70,16 +70,6 @@ const HousingPage = () => {
                   <Card.Text>
                     {'Proximity to Campus: ' + attr['uclaProximity']}
                   </Card.Text>
-                  <div style={{ border: '3px solid', width: '300px' }}>
-                    <center>
-                      <Link
-                        style={{ textDecoration: 'none' }}
-                        to={'/residential-buildings/' + keys[idx]}
-                      >
-                        <h4>{attr['title'] + ' Page'}</h4>
-                      </Link>
-                    </center>
-                  </div>
                 </Card.Body>
               </Card>
             ))
