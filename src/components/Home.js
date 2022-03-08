@@ -11,7 +11,7 @@ const Home = () => {
   };
 
   return (
-    <Container>
+    <div>
       <div>
         <GiBirdHouse />
         <Row className="mt-3">
@@ -84,7 +84,7 @@ const Home = () => {
       <div style={{ marginTop: "50px" }}>
         <Outlet></Outlet>
       </div>
-    </Container>
+    </div>
   );
 };
 
