@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { IoIosStar } from "react-icons/io"	
-import { Container, Form, Button, Card } from 'react-bootstrap'
+import { Container, Button, Card } from 'react-bootstrap'
 import { firestore } from '../util/firebaseConfig'
 import Col from 'react-bootstrap/Col'	
 import Row from 'react-bootstrap/Row'
@@ -13,6 +13,7 @@ import {
   query,
 } from 'firebase/firestore'
 import Loading from './Loading'
+import '../images/delta-terrace.jpg'
 
 
 const FirestoreService = () => {
@@ -55,23 +56,92 @@ const FirestoreService = () => {
     return <Loading></Loading>
   }
   return (
-    <Container className="justify-content-center" style={{ minHeight: '60vh' }}>
+    <Container className="justify-content-center" style={{
+        backgroundColor: '#DAEBFE',
+        minHeight: '60vh',
+         }}>
       <center>
-        <h1>This review system uses Firebase Firestore</h1>
+        {/* <h1>This review system uses Firebase Firestore</h1> */}
         <br />
         <br />
         <br />
-        <h3>Write a Review:</h3>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Control
-            as="textarea"
-            rows="5"
-            onChange={(event) => {
-              setReview(event.target.value)
-            }}
-          />
-        </Form.Group>
+        <Card
+                className="dormPlacard"
+                // key={idx}
+                style={{
+                  backgroundColor: '#2774AE',
+                  width: '60rem',
+                  height: '23.5rem',
+                  border: '3px solid',
+                  color: '#FFD100',
+                }}
+              >
+                <Card.Body>
+                
+                  
+                  <Row>
+                  <Col>
+                  <div className='averageRatings'> 
+
+                  <Card.Title>
+                    
+                    <h2>Dummy Housing Name</h2>
+                    <br></br>
+                    {/* <h1>{attr['title']}</h1> */}
+                  </Card.Title>
+                  
+                  <Card.Text>
+                    {/* ADD RATING NUMBERS BASED ON DORM */}
+                    <h4>
+                      {'Overall Rating: ' + 'Dummy number 0'}
+                    </h4>
+                  </Card.Text>
+                  <br />
+                  <Card.Text>
+                    {/* ADD RATING NUMBERS BASED ON DORM */}
+                    {'Quality of Essentials: ' + 'Dummy number 1'}
+                  </Card.Text>
+                  <Card.Text>
+                    {/* ADD RATING NUMBERS BASED ON DORM */}
+                    {'Access to Food: ' + 'Dummy Number 2'}
+                  </Card.Text>
+                  {/* ADD RATING NUMBERS BASED ON DORM */}
+                  <Card.Text>{'Noise Level: ' + 'Dummy Number 3'}</Card.Text>
+                  <Card.Text>
+                    {'Proximity to Parking: ' + 'Dummy Number 4'}
+                  </Card.Text>
+                  <Card.Text>
+                    {/* ADD RATING NUMBERS BASED ON DORM */}
+                    {'Proximity to Campus: ' + 'Dummy Number 5'}
+                  </Card.Text>
+                  
+                  {/* <div style={{ border: '3px solid', width: '300px' }}>
+                     <center>
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        to={'/' + keys[idx]}
+                        // This opens links in a new tab
+                        // target="_blank"
+                      >
+                        <h4>{attr['title'] + ' Page'}</h4>
+                      </Link>
+                    </center> 
+                  </div> */}
+                  </div>
+                  </Col>
+                  
+                  <Col>
+                  <figure className="figure">
+                    <img src={require("../images/delta-terrace.jpg")} className="figure-img img-fluid rounded"></img>
+                  </figure>
+                  
+                  </Col>
+                  </Row>
+                  
+                </Card.Body>
+              </Card>
         <br />
+        {/* REPLACE WITH ADD REVIEW BUTTON */}
         <Button onClick={writeReview}>
           <h3>Submit Review</h3>
         </Button>

@@ -5,6 +5,9 @@ const Rating = () => {
   return (
     <div>
       <StarRating></StarRating>
+      
+      <br></br>
+      <br></br>
 
       <form>
         <label for="comment">Additional Comments:</label>
@@ -16,6 +19,9 @@ const Rating = () => {
           placeholder="Add any additional comments here"
         ></textarea>
       </form>
+
+      <br></br>
+      <br></br>
 
       <button type="button" class="btn btn-primary btn-lg">
         Submit

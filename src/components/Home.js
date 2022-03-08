@@ -3,6 +3,7 @@ import { Col, Row, Button } from "react-bootstrap";
 import { signOut } from "firebase/auth";
 import { auth } from "../util/firebaseConfig";
 import { GiBirdHouse } from "react-icons/gi";
+import { FilterSearchService } from "./FilterSearchService.js"
 
 const Home = () => {
   const logout = async () => {
@@ -10,32 +11,39 @@ const Home = () => {
   };
 
   return (
-    <div id="navbar">
-      <div
-        style={{
-          paddingInline: "100px",
-          borderBottom: "solid 3px black",
-          backgroundColor: "skyblue",
-        }}
-      >
-        <div style={{ padding: "20px" }}>
-          <h2 className="text-center">Navigation Bar</h2>
-        </div>
-        <div
-          style={{
-            flexGrow: 1,
-            alignContent: "center",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
-          <nav
-            style={{
-              flexGrow: 1,
-              justifyContent: "space-between",
-              paddingInline: "100px",
-            }}
-          >
+    <Container>
+      <div>
+        <GiBirdHouse />
+        <Row className="mt-3">
+          
+          <Col md={{ span: 6, offset: 6 }}>
+            <div className="text-center">
+              <Button type="button" className="btn btn-primary" onClick={logout}>
+                <h5>Log Out</h5>
+              </Button>
+              &nbsp;&nbsp;&nbsp;
+              {/* link to filter search page */}
+              <Link
+                  to="/filtersearch-test"
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  <h5>Filter Search</h5>
+                </Link>
+                &nbsp;&nbsp;&nbsp;
+                {/* link to personal list */}
+                <Link
+                  to="/personallist-test"
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  <h5>Housing List</h5>
+                </Link>
+            </div>
+          </Col>
+        </Row>
+        <div>
+          <nav style={{ borderBottom: "solid 3px", paddingBottom: "1rem" }}>
             <Row>
               <Col>
                 <Link
@@ -58,24 +66,9 @@ const Home = () => {
                 </Link>
               </Col>
               <Col>
-                <Link
-                  to="/filtersearch-test"
-                  style={{
-                    textDecoration: "none",
-                  }}
-                >
-                  <h4 className="text-center">Filter Search</h4>
-                </Link>
               </Col>
               <Col>
-                <Link
-                  to="/personallist-test"
-                  style={{
-                    textDecoration: "none",
-                  }}
-                >
-                  <h4 className="text-center">Preferred Housing</h4>
-                </Link>
+                
               </Col>
               <Col>
                 <div className="text-center">
@@ -91,7 +84,7 @@ const Home = () => {
       <div style={{ marginTop: "50px" }}>
         <Outlet></Outlet>
       </div>
-    </div>
+    </Container>
   );
 };
 
