@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { IoIosStar } from "react-icons/io"	
-import { Container, Form, Button, Card, Image } from 'react-bootstrap'
+import { Container, Button, Card } from 'react-bootstrap'
 import { firestore } from '../util/firebaseConfig'
 import Col from 'react-bootstrap/Col'	
 import Row from 'react-bootstrap/Row'
@@ -13,7 +13,7 @@ import {
   query,
 } from 'firebase/firestore'
 import Loading from './Loading'
-import '../placeholders/delta-terrace.jpg'
+import '../images/delta-terrace.jpg'
 
 
 const FirestoreService = () => {
@@ -56,9 +56,12 @@ const FirestoreService = () => {
     return <Loading></Loading>
   }
   return (
-    <Container className="justify-content-center" style={{ minHeight: '60vh' }}>
+    <Container className="justify-content-center" style={{
+        backgroundColor: '#DAEBFE',
+        minHeight: '60vh',
+         }}>
       <center>
-        <h1>This review system uses Firebase Firestore</h1>
+        {/* <h1>This review system uses Firebase Firestore</h1> */}
         <br />
         <br />
         <br />
@@ -66,10 +69,11 @@ const FirestoreService = () => {
                 className="dormPlacard"
                 // key={idx}
                 style={{
-                  width: '50rem',
-                  height: '25rem',
+                  backgroundColor: '#2774AE',
+                  width: '60rem',
+                  height: '23.5rem',
                   border: '3px solid',
-                  
+                  color: '#FFD100',
                 }}
               >
                 <Card.Body>
@@ -81,12 +85,16 @@ const FirestoreService = () => {
 
                   <Card.Title>
                     
+                    <h2>Dummy Housing Name</h2>
+                    <br></br>
                     {/* <h1>{attr['title']}</h1> */}
                   </Card.Title>
                   
                   <Card.Text>
                     {/* ADD RATING NUMBERS BASED ON DORM */}
-                    {'Overall Rating: ' + 'Dummy number 0'}
+                    <h4>
+                      {'Overall Rating: ' + 'Dummy number 0'}
+                    </h4>
                   </Card.Text>
                   <br />
                   <Card.Text>
@@ -124,9 +132,9 @@ const FirestoreService = () => {
                   
                   <Col>
                   <figure className="figure">
-                    <img src={require("../placeholders/delta-terrace.jpg")} className="figure-img img-fluid rounded"></img>
+                    <img src={require("../images/delta-terrace.jpg")} className="figure-img img-fluid rounded"></img>
                   </figure>
-                  <h2>Dummy Housing Name</h2>
+                  
                   </Col>
                   </Row>
                   
