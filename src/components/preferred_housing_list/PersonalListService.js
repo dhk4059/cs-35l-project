@@ -126,7 +126,12 @@ const PersonalListService = () => {
                   return (
                     <Dropdown.Item
                       key={index + 1}
-                      onClick={() => setListNum(index)}
+                      onClick={() => {
+                        setListNum(index);
+                        setHousingKeys(housingTitles);
+                        setMakePrefs([]);
+                        setDisableMakeListButton(false);
+                      }}
                     >
                       <h5>{index + 1}</h5>
                     </Dropdown.Item>
