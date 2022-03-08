@@ -21,3 +21,8 @@ code {
 input[type="radio"]{
   visibility:hidden;
 }
+
+
+.averageRatings {
+  border-right: 1px solid;
+}

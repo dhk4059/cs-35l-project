@@ -17,7 +17,7 @@ const StarRating = () => {
 
   return (
     <div>
-      <h1 id="star_description">Proximity to Campus: </h1>
+      <h5 id="star_description">Proximity to Campus: </h5>
       {[...Array(5)].map((star, i) => {
         const ratingValue1 = i + 1
 
@@ -43,7 +43,7 @@ const StarRating = () => {
           </label>
         )
       })}
-      <h1 id="star_description">Accessibility to Food: </h1>
+      <h5 id="star_description">Accessibility to Food: </h5>
       {[...Array(5)].map((star, i) => {
         const ratingValue2 = i + 1
 
@@ -69,7 +69,7 @@ const StarRating = () => {
           </label>
         )
       })}
-      <h1 id="star_description">Ease of Parking: </h1>
+      <h5 id="star_description">Ease of Parking: </h5>
       {[...Array(5)].map((star, i) => {
         const ratingValue3 = i + 1
 
@@ -93,7 +93,7 @@ const StarRating = () => {
           </label>
         )
       })}
-      <h1 id="star_description">Access to Essentials: </h1>
+      <h5 id="star_description">Access to Essentials: </h5>
       {[...Array(5)].map((star, i) => {
         const ratingValue4 = i + 1
 
@@ -119,7 +119,7 @@ const StarRating = () => {
           </label>
         )
       })}
-      <h1 id="star_description">Noise Level: </h1>
+      <h5 id="star_description">Noise Level: </h5>
       {[...Array(5)].map((star, i) => {
         const ratingValue5 = i + 1
 

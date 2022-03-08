@@ -18,7 +18,7 @@ const Home = () => {
           
           <Col md={{ span: 6, offset: 6 }}>
             <div className="text-center">
-              <Button type="button" class="btn btn-primary" onClick={logout}>
+              <Button type="button" className="btn btn-primary" onClick={logout}>
                 <h5>Log Out</h5>
               </Button>
               &nbsp;&nbsp;&nbsp;
@@ -26,7 +26,7 @@ const Home = () => {
               <Link
                   to="/filtersearch-test"
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                 >
                   <h5>Filter Search</h5>
                 </Link>
@@ -35,7 +35,7 @@ const Home = () => {
                 <Link
                   to="/personallist-test"
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                 >
                   <h5>Housing List</h5>
                 </Link>
