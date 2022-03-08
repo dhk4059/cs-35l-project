@@ -24,7 +24,8 @@ const housingData = {
   "hitch-residential": "Hitch Suites",
   "saxon-residential": "Saxon Suites",
   "hedrick-summit": "Hedrick Summit",
-  "sproul-cove": "Sproul Cove"
+  "sproul-cove": "Sproul Cove",
+  "courtside": "Courtside"
 };
 
 export default housingData

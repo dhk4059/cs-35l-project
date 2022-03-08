@@ -4,6 +4,7 @@ import { auth, db } from "../../util/firebaseConfig";
 import { onValue, ref, set } from "firebase/database";
 import Loading from "../Loading";
 import ListView from "./ListView";
+import housingData from "../../util/housingData";
 
 const PersonalListService = () => {
   const user = auth.currentUser;
@@ -12,11 +13,20 @@ const PersonalListService = () => {
   const [isViewList, setIsViewList] = useState(true);
   const [listNum, setListNum] = useState(0);
   const [showUpdateButton, setShowUpdateButton] = useState(false);
-  // const [makePrefs, setMakePrefs] = useState([])
+  const [showEditListButton, setShowEditListButton] = useState(false);
+  const [showMakeListButton, setShowMakeListButton] = useState(false);
+  const [makePrefs, setMakePrefs] = useState([]);
+  const [housingKeys, setHousingKeys] = useState(Object.keys(housingData));
 
   const updateList = () => {
-    // console.log(prefs[listNum]);
-    set(ref(db, "userPrefs/" + user.uid + "/" + listNum), prefs[listNum]);
+    console.log(prefs[listNum]);
+    console.log("list updated");
+    // set(ref(db, "userPrefs/" + user.uid + "/" + listNum), prefs[listNum]);
+  };
+
+  const makeList = () => {
+    console.log(makePrefs);
+    console.log("list made");
   };
 
   const updateButton = () => {
@@ -27,6 +37,16 @@ const PersonalListService = () => {
     let tempPrefs = prefs;
     tempPrefs[listNum] = newPrefs;
     setPrefs(tempPrefs);
+    setShowEditListButton(true);
+  };
+
+  const updateMakePrefs = (newPrefs) => {
+    setMakePrefs(newPrefs);
+    setShowMakeListButton(true);
+  };
+
+  const updateHousing = (newHousing) => {
+    setHousingKeys(newHousing);
   };
 
   useEffect(() => {
@@ -114,46 +134,50 @@ const PersonalListService = () => {
           className="d-flex justify-content-center"
           style={{
             width: "75vh",
+            // height: "50vh",
             backgroundColor: "lightblue",
           }}
         >
           {prefs !== null ? (
             <ListView
               prefs={isViewList ? prefs[listNum] : []}
+              makePrefs={!isViewList ? makePrefs : []}
               choice={isViewList}
               columnOrder={isViewList ? ["0"] : ["0", "1"]}
               listChoice={listNum}
-              currentUser={user}
               showButton={updateButton}
               newPrefs={updatePrefs}
+              newMakePrefs={updateMakePrefs}
+              housingData={housingKeys}
+              newHousing={updateHousing}
             ></ListView>
           ) : (
             <ListView
               prefs={[]}
+              makePrefs={!isViewList ? makePrefs : []}
               choice={isViewList}
               columnOrder={isViewList ? ["0"] : ["0", "1"]}
               listChoice={listNum}
-              currentUser={user}
               showButton={updateButton}
               newPrefs={updatePrefs}
+              newMakePrefs={updateMakePrefs}
+              housingData={housingKeys}
+              newHousing={updateHousing}
             ></ListView>
           )}
         </div>
         <div style={{ height: "50px", padding: "8px", marginTop: "16px" }}>
-          {showUpdateButton && isViewList ? (
+          {showUpdateButton && showEditListButton && isViewList ? (
             <Button onClick={updateList}>
-              <h5>Update Your List</h5>
+              <h5>Update List</h5>
+            </Button>
+          ) : showUpdateButton && showMakeListButton && !isViewList ? (
+            <Button onClick={makeList}>
+              <h5>Make List</h5>
             </Button>
           ) : null}
         </div>
       </center>
-      <div style={{ marginTop: "50px" }}>
-        - Edit List will have a "column" represented by trash can symbol within
-        a div, where dropping stuff into the trashcan deletes the item from the
-        list
-      </div>
-      <div>- Make List should add a new list, not edit existing lists</div>
-      <div>- lists should be scrollable containers</div>
       <div>- random generate data for all housingKeys in python</div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
 import { signOut } from "firebase/auth";
 import { auth } from "../util/firebaseConfig";
 import { GiBirdHouse } from "react-icons/gi";
@@ -10,24 +10,32 @@ const Home = () => {
   };
 
   return (
-    <Container>
-      <div>
-        <GiBirdHouse />
-        <Row className="mt-3">
-          <Col md={4}>
-            <h2>Navigation Bar:</h2>
-          </Col>
-          <Col md={{ span: 4, offset: 4 }}>
-            <div className="text-center">
-              <Button variant="primary" onClick={logout}>
-                <h5>Log Out</h5>
-              </Button>
-            </div>
-          </Col>
-        </Row>
-        <p>*In other words, all routing is done below this navigation bar.</p>
-        <div>
-          <nav style={{ borderBottom: "solid 3px", paddingBottom: "1rem" }}>
+    <div id="navbar">
+      <div
+        style={{
+          paddingInline: "100px",
+          borderBottom: "solid 3px black",
+          backgroundColor: "skyblue",
+        }}
+      >
+        <div style={{ padding: "20px" }}>
+          <h2 className="text-center">Navigation Bar</h2>
+        </div>
+        <div
+          style={{
+            flexGrow: 1,
+            alignContent: "center",
+            justifyContent: "center",
+            display: "flex",
+          }}
+        >
+          <nav
+            style={{
+              flexGrow: 1,
+              justifyContent: "space-between",
+              paddingInline: "100px",
+            }}
+          >
             <Row>
               <Col>
                 <Link
@@ -36,7 +44,7 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4>Star Ratings</h4>
+                  <h4 className="text-center">Star Ratings</h4>
                 </Link>
               </Col>
               <Col>
@@ -46,7 +54,7 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4>Written Reviews</h4>
+                  <h4 className="text-center">Written Reviews</h4>
                 </Link>
               </Col>
               <Col>
@@ -56,7 +64,7 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4>Filter Search</h4>
+                  <h4 className="text-center">Filter Search</h4>
                 </Link>
               </Col>
               <Col>
@@ -66,17 +74,24 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4>Preferred Housing</h4>
+                  <h4 className="text-center">Preferred Housing</h4>
                 </Link>
+              </Col>
+              <Col>
+                <div className="text-center">
+                  <Button variant="primary" onClick={logout}>
+                    <h5>Log Out</h5>
+                  </Button>
+                </div>
               </Col>
             </Row>
           </nav>
-          <br />
-          <br />
-          <Outlet />
         </div>
       </div>
-    </Container>
+      <div style={{ marginTop: "50px" }}>
+        <Outlet></Outlet>
+      </div>
+    </div>
   );
 };
 
