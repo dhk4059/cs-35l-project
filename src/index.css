@@ -24,13 +24,5 @@ input[type="radio"]{
 
 
 .averageRatings {
-  border-right: 3px solid;
-}
-
-h2 {
-  font-family: 'Ubuntu', sans-serif;
-}
-
-h4 {
-  font-family: 'Ubuntu', sans-serif;
+  border-right: 1px solid;
 }
