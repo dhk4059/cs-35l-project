@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
 import { signOut } from "firebase/auth";
 import { auth } from "../util/firebaseConfig";
 import { GiBirdHouse } from "react-icons/gi";
@@ -11,7 +11,7 @@ const Home = () => {
   };
 
   return (
-    <Container>
+    <div>
       <div>
         <GiBirdHouse />
         <Row className="mt-3">
@@ -52,7 +52,7 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4>Star Ratings</h4>
+                  <h4 className="text-center">Star Ratings</h4>
                 </Link>
               </Col>
               <Col>
@@ -62,7 +62,7 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4>Written Reviews</h4>
+                  <h4 className="text-center">Written Reviews</h4>
                 </Link>
               </Col>
               <Col>
@@ -70,14 +70,21 @@ const Home = () => {
               <Col>
                 
               </Col>
+              <Col>
+                <div className="text-center">
+                  <Button variant="primary" onClick={logout}>
+                    <h5>Log Out</h5>
+                  </Button>
+                </div>
+              </Col>
             </Row>
           </nav>
-          <br />
-          <br />
-          <Outlet />
         </div>
       </div>
-    </Container>
+      <div style={{ marginTop: "50px" }}>
+        <Outlet></Outlet>
+      </div>
+    </div>
   );
 };
 

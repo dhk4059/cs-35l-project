@@ -2,32 +2,37 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ListElement from "./ListElement";
-import housingData from "../../util/housingData";
+import { Button } from "react-bootstrap";
 
 const DNDArea = styled.div`
-  margin: 8px;
+  margin: 4px;
   border: 3px solid blue;
   padding: 8px;
   flex-direction: column;
-  min-width: 100px;
+  width: 235px;
+  overflow-y: auto;
+  height: 50vh;
 `;
-
-const PrefList = styled.div`
-  padding: 8px;
-  flex-grow: 1;
-  min-height: 100px;
-`;
-
+// visibility: ${(props) =>
+// props.isVisible && props.columnOrder === "1" ? "hidden" : "visible"};
 const ListView = (props) => {
-  const [keyData, setKeyData] = useState([
-    props.prefs,
-    Object.keys(housingData),
-  ]);
+  const [keyData, setKeyData] = useState([props.prefs, props.housingData]);
   const columnOrder = props.columnOrder;
 
   useEffect(() => {
-    setKeyData([props.prefs, Object.keys(housingData)]);
-  }, [props.listChoice, props.prefs, props.choice]);
+    if (props.choice) {
+      setKeyData([props.prefs, props.housingData]);
+    } else {
+      setKeyData([props.makePrefs, props.housingData]);
+    }
+  }, [
+    props.listChoice,
+    props.prefs,
+    props.choice,
+    props.housingData,
+    props.isMakeDisabled,
+    props.makePrefs
+  ]);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -53,45 +58,118 @@ const ListView = (props) => {
 
     if (start === end) {
       columns[source.droppableId].splice(destination.index, 0, draggableId);
-      if (props.choice) {
-        props.showButton();
-        props.newPrefs(keyData[0]);
+    } else {
+      if (destination.droppableId !== "trash") {
+        columns[destination.droppableId].splice(
+          destination.index,
+          0,
+          draggableId
+        );
+      }
+    }
+    console.log(columns[0]);
+    props.showButton();
+    if (props.choice) {
+      props.newPrefs(columns[0]);
+      if (props.isMakeDisabled) {
+        props.newHousing(columns[1]);
       }
     } else {
-      columns[destination.droppableId].splice(
-        destination.index,
-        0,
-        draggableId
-      );
+      props.newMakePrefs(columns[0]);
+      props.newHousing(columns[1]);
     }
     setKeyData(columns);
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      {columnOrder.map((columnID) => {
-        const column = keyData[columnID];
-        return (
-          <DNDArea key={columnID}>
-            <Droppable droppableId={columnID}>
-              {(provided) => (
-                <PrefList ref={provided.innerRef} {...provided.droppableProps}>
-                  {column.map((house, index) => {
-                    return (
-                      <ListElement
-                        key={house}
-                        index={index}
-                        houseKey={house}
-                      ></ListElement>
-                    );
-                  })}
-                  {provided.placeholder}
-                </PrefList>
-              )}
-            </Droppable>
-          </DNDArea>
-        );
-      })}
+    <DragDropContext onDragEnd={onDragEnd} >
+      <div>
+        <div style={{ display: "flex" }}>
+          {columnOrder.map((columnID) => {
+            const column = keyData[columnID];
+            return (
+              <DNDArea columnOrder={columnID} key={columnID}>
+                <Droppable droppableId={columnID}>
+                  {(provided) => (
+                    <div
+                      style={{
+                        padding: "8px",
+                        flexGrow: 1,
+                        minHeight: "400px",
+                      }}
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      {column.map((house, index) => {
+                        return (
+                          <ListElement
+                            key={house}
+                            index={index}
+                            houseKey={house}
+                          ></ListElement>
+                        );
+                      })}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DNDArea>
+            );
+          })}
+          {props.choice ? (
+            !props.isMakeDisabled ? (
+              <div
+                style={{
+                  width: "235px",
+                  margin: "4px",
+                  border: "3px solid blue",
+                  padding: "8px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  display: "flex",
+                }}
+              >
+                <Button
+                  variant="outline-primary"
+                  style={{ borderWidth: "2px" }}
+                  onClick={props.disableMakeList}
+                >
+                  <h6 style={{ fontWeight: "bold", color: "black" }}>
+                    Add More Dorms
+                  </h6>
+                </Button>
+              </div>
+            ) : (
+              <DNDArea columnOrder={"1"} key={"1"}>
+                <Droppable droppableId={"1"}>
+                  {(provided) => (
+                    <div
+                      style={{
+                        padding: "8px",
+                        flexGrow: 1,
+                        minHeight: "400px",
+                      }}
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      {props.housingData.map((house, index) => {
+                        return (
+                          <ListElement
+                            key={house}
+                            index={index}
+                            houseKey={house}
+                          ></ListElement>
+                        );
+                      })}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DNDArea>
+            )
+          ) : null}
+        </div>
+      </div>
     </DragDropContext>
   );
 };
