@@ -96,13 +96,16 @@ const RatingPlacard = ({ housingData }) => {
             </div>
           </Col>
           <Col>
-            <figure className="figure">
-              <img
-                src={housingData["img"]}
-                className="figure-img img-fluid rounded"
-                alt={"A Photo of " + housingData["title"]}
-              ></img>
-            </figure>
+            <center>
+              <figure className="figure">
+                <img
+                  src={housingData["img"]}
+                  className="figure-img img-fluid rounded"
+                  alt={"A Photo of " + housingData["title"]}
+                  style={{ maxHeight: "22rem" }}
+                ></img>
+              </figure>
+            </center>
           </Col>
         </Row>
       </Card.Body>

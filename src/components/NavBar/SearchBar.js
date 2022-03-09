@@ -59,6 +59,7 @@ const SearchBar = () => {
           borderRadius: "6px",
           overflowY: "auto",
           visibility: isVisible ? "visible" : "hidden",
+          zIndex: "9",
         }}
       >
         {searchResults.length > 0
