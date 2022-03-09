@@ -1,7 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
-import housingData from "../../util/housingData";
 import { Link } from "react-router-dom";
+import housingData from "../../util/housingData";
 
 const Container = styled.div`
   margin: 8px;
@@ -31,7 +31,12 @@ const ListElement = (props) => {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            <h6 style={{ color: snapshot.isDragging ? "white" : "black" }}>
+            <h6
+              style={{
+                color: snapshot.isDragging ? "white" : "black",
+                fontWeight: "bold",
+              }}
+            >
               {housingData[props.houseKey]}
             </h6>
           </Container>
