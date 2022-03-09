@@ -101,7 +101,7 @@ const PersonalListService = () => {
     return <Loading></Loading>;
   }
   return (
-    <div style={{ height: "60vh" }}>
+    <div>
       <center>
         <div
           style={{
