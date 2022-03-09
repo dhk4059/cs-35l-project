@@ -46,7 +46,7 @@ const HomePage = () => {
 
       <Container
         className="d-flex justify-content-center"
-        style={{ minHeight: "75vh", maxWidth: "60vw" }}
+        style={{ maxWidth: "60vw", paddingBottom: "40px" }}
       >
         <Col>
           <div style={{ marginTop: "50px" }}>
@@ -58,7 +58,9 @@ const HomePage = () => {
                         style={{ textDecoration: "none" }}
                         to={"/" + keysA[idx]}
                       >
-                        <h4 style={{ color: "#FFD100" }}>{title}</h4>
+                        <div className="d-flex justify-content-center">
+                          <h4 style={{ color: "#FFD100" }}>{title}</h4>
+                        </div>
                       </Link>
                     </center>
                   </div>
@@ -76,7 +78,9 @@ const HomePage = () => {
                         style={{ textDecoration: "none" }}
                         to={"/" + keysB[idx]}
                       >
-                        <h4 style={{ color: "#FFD100" }}>{title}</h4>
+                        <div className="d-flex justify-content-center">
+                          <h4 style={{ color: "#FFD100" }}>{title}</h4>
+                        </div>
                       </Link>
                     </center>
                   </div>
@@ -94,7 +98,9 @@ const HomePage = () => {
                         style={{ textDecoration: "none" }}
                         to={"/" + keysC[idx]}
                       >
-                        <h4 style={{ color: "#FFD100" }}>{title}</h4>
+                        <div className="d-flex justify-content-center">
+                          <h4 style={{ color: "#FFD100" }}>{title}</h4>
+                        </div>
                       </Link>
                     </center>
                   </div>

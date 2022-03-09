@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Card, DropdownButton, Dropdown } from "react-bootstrap";
 import { db } from "../../util/firebaseConfig";
-import {
-  onValue,
-  ref,
-  orderByChild,
-  query,
-} from "firebase/database";
+import { onValue, ref, orderByChild, query } from "firebase/database";
 
 import { Link } from "react-router-dom";
 
@@ -30,7 +25,7 @@ const FilteredSearch = () => {
   const searchResults = (searchFilter) => {
     // get data
     onValue(
-      query(ref(db, "ratings"), orderByChild(searchFilter)),
+      query(ref(db, "filterDB"), orderByChild(searchFilter)),
       (snapshot) => {
         let housing = new Array(snapshot.size);
         let i = snapshot.size - 1;
@@ -53,7 +48,6 @@ const FilteredSearch = () => {
         }
 
         setShow(true);
-        console.log(housing);
         setHousing(housing);
       }
     );

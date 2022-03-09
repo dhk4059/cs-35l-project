@@ -54,7 +54,7 @@ const ListView = (props) => {
     }
 
     // reorder column
-    console.log(result);
+    // console.log(result);
     let columns = keyData;
     let start = columns[source.droppableId];
     let end = columns[destination.droppableId];
@@ -69,7 +69,7 @@ const ListView = (props) => {
         draggableId
       );
     }
-    console.log(columns[0]);
+    // console.log(columns[0]);
     props.showButton();
     if (props.choice) {
       props.newPrefs(columns[0]);

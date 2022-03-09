@@ -86,8 +86,8 @@ const HousingList = () => {
       try {
         const data = snapshot.val();
 
-        console.log(data);
-        console.log("DB CALL");
+        // console.log(data);
+        // console.log("DB CALL");
         setPrefs(data);
         setLoading(false);
       } catch (e) {

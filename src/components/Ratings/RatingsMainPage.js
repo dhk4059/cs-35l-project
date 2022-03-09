@@ -44,7 +44,7 @@ const RatingsMainPage = () => {
       className="d-flex justify-content-center"
       style={{
         minHeight: "100vh",
-        maxHeight: "100%",
+        maxHeight: "100vw",
         paddingLeft: "50px",
         paddingRight: "50px",
       }}

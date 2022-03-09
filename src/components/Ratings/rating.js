@@ -49,34 +49,58 @@ const Rating = ({ closePopUp, resetView }) => {
 
   const changeRatings = async () => {
     let data;
+    let filterDB = {};
     onValue(ref(db, "ratings/" + params.id), (snapshot) => {
       data = snapshot.val();
       if (accessToEssentials !== null) {
         data["essentialsQuality"]["ratingSum"] += accessToEssentials;
         data["essentialsQuality"]["totalReviewers"] += 1;
+        filterDB["essentialsQuality"] = parseFloat(
+          data["essentialsQuality"]["ratingSum"] /
+            data["essentialsQuality"]["totalReviewers"]
+        ).toFixed(2);
       }
       if (accessibilityToFood !== null) {
         data["foodAccess"]["ratingSum"] += accessibilityToFood;
         data["foodAccess"]["totalReviewers"] += 1;
+        filterDB["foodAccess"] = parseFloat(
+          data["foodAccess"]["ratingSum"] / data["foodAccess"]["totalReviewers"]
+        ).toFixed(2);
       }
       if (noiseLevel !== null) {
         data["noiseLevel"]["ratingSum"] += noiseLevel;
         data["noiseLevel"]["totalReviewers"] += 1;
+        filterDB["noiseLevel"] = parseFloat(
+          data["noiseLevel"]["ratingSum"] / data["noiseLevel"]["totalReviewers"]
+        ).toFixed(2);
       }
       if (overallRating !== null) {
         data["overallRating"]["ratingSum"] += overallRating;
         data["overallRating"]["totalReviewers"] += 1;
+        filterDB["overallRating"] = parseFloat(
+          data["overallRating"]["ratingSum"] /
+            data["overallRating"]["totalReviewers"]
+        ).toFixed(2);
       }
       if (proximityToParking !== null) {
         data["parkingProximity"]["ratingSum"] += proximityToParking;
         data["parkingProximity"]["totalReviewers"] += 1;
+        filterDB["parkingProximity"] = parseFloat(
+          data["parkingProximity"]["ratingSum"] /
+            data["parkingProximity"]["totalReviewers"]
+        ).toFixed(2);
       }
       if (proximityToCampus !== null) {
         data["uclaProximity"]["ratingSum"] += proximityToCampus;
         data["uclaProximity"]["totalReviewers"] += 1;
+        filterDB["uclaProximity"] = parseFloat(
+          data["uclaProximity"]["ratingSum"] /
+            data["uclaProximity"]["totalReviewers"]
+        ).toFixed(2);
       }
     });
     update(ref(db, "ratings/" + params.id), data);
+    update(ref(db, "filterDB/" + params.id), filterDB);
   };
 
   return (

@@ -50,9 +50,9 @@ h6 {
   border-radius: 5px;
   border: 1px solid;
   color: #ffd100;
-  width: 300px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  width: 275px;
+  /* padding-top: 3px;
+  padding-bottom: 3px; */
 }
 
 .homePageListElement:hover {

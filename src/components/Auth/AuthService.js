@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Row, Button, Form } from "react-bootstrap";
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../util/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const AuthService = () => {
   const [isLogin, setChoice] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alreadyLoggedIn, setAlreadyLoggedIn] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+  const navigate = useNavigate();
 
   const register = async () => {
     var user;
@@ -35,21 +40,75 @@ const AuthService = () => {
     if (isLogin) {
       login().then((value) => {
         console.log(value);
+        if (value !== undefined) {
+          navigate("/", { replace: true });
+        }
       });
     } else {
       register().then((value) => {
         console.log(value);
+        if (value !== undefined) {
+          navigate("/", { replace: true });
+        }
       });
     }
   };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser !== null) {
+        setAlreadyLoggedIn(true);
+      }
+      setCheckingAuth(false);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  if (checkingAuth) {
+    return (
+      <div
+        className="d-flex justify-content-center"
+        style={{
+          minHeight: "100vh",
+          width: "100vw",
+          paddingTop: "100px",
+        }}
+      >
+        <h1>Checking authentication...</h1>
+      </div>
+    );
+  }
+  if (alreadyLoggedIn) {
+    return (
+      <center>
+        <div
+          // className="d-flex justify-content-center"
+          style={{
+            minHeight: "100vh",
+            width: "100vw",
+            paddingTop: "100px",
+          }}
+        >
+          <h1>
+            {"User at " +
+              auth.currentUser.email +
+              ", you are already logged in."}
+          </h1>
+          <Button onClick={() => navigate("/", { replace: true })}>
+            <h3>Go to Home</h3>
+          </Button>
+        </div>
+      </center>
+    );
+  }
   return (
     <div
-      className="d-flex align-items-center justify-content-center"
+      className="d-flex justify-content-center"
       style={{
         minHeight: "100vh",
-        width: "100%",
-        backgroundImage: `url("https://admission.ucla.edu/sites/default/files/hero-landing-images/campus-downtown-2x.jpg")`,
+        width: "100vw",
+        paddingTop: "100px",
       }}
     >
       <div>
@@ -60,7 +119,6 @@ const AuthService = () => {
             <Button
               onClick={() => setChoice(true)}
               variant={isLogin ? "primary" : "outline-primary"}
-              disabled={isLogin}
             >
               <h3>Login</h3>
             </Button>
@@ -69,7 +127,6 @@ const AuthService = () => {
             <Button
               onClick={() => setChoice(false)}
               variant={!isLogin ? "primary" : "outline-primary"}
-              disabled={!isLogin}
             >
               <h3>Register</h3>
             </Button>

@@ -11,18 +11,24 @@ import { auth } from "./util/firebaseConfig";
 import HousingList from "./components/Preferred_Housing/HousingList";
 import HomePage from "./components/Home/HomePage";
 import UnknownPage from "./components/Misc/UnknownPage";
+import AuthService from "./components/Auth/AuthService";
+import NeedLogin from "./components/Misc/NeedLogin";
 
 onAuthStateChanged(auth, (currentUser) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App user={currentUser} />}>
+          <Route path="/" element={<App />}>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/:id" element={<RatingsMainPage />}></Route>
+            <Route path="login" element={<AuthService />}></Route>
             <Route path="ratings" element={<RatingsMainPage />}></Route>
             <Route path="filteredsearch" element={<FilteredSearch />}></Route>
-            <Route path="housinglist" element={<HousingList />}></Route>
+            <Route
+              path="housinglist"
+              element={currentUser !== null ? <HousingList /> : <NeedLogin />}
+            ></Route>
             <Route path="*" element={<UnknownPage />} />
           </Route>
         </Routes>
