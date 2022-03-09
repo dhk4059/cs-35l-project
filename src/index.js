@@ -11,7 +11,7 @@ import { auth } from './util/firebaseConfig'
 import PersonalListService from './components/preferred_housing_list/PersonalListService'
 import HomePage from './components/rating/HomePage'
 import HousingPage from './components/rating/HousingPage'
-import DatabaseService from './components/rating/DatabaseService'
+// import DatabaseService from './components/rating/DatabaseService'
 import UnknownPage from './components/UnknownPage'
 
 onAuthStateChanged(auth, (currentUser) => {
