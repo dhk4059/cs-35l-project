@@ -24,7 +24,7 @@ const FilteredSearch = () => {
 
   const searchResults = (searchFilter) => {
     // get data
-    onValue(
+    const unsubscribe = onValue(
       query(ref(db, "filterDB"), orderByChild(searchFilter)),
       (snapshot) => {
         let housing = new Array(snapshot.size);
@@ -51,6 +51,7 @@ const FilteredSearch = () => {
         setHousing(housing);
       }
     );
+    return unsubscribe;
   };
 
   return (
