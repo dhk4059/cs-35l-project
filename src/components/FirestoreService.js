@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 import Loading from "./Loading";
 import "../images/delta-terrace.jpg";
-
+import Popup from './rating/popup.js'
 const FirestoreService = () => {
   const [userReview, setReview] = useState("");
   const [allReviews, setAllReviews] = useState([]);
@@ -137,9 +137,7 @@ const FirestoreService = () => {
         </Card>
         <br />
         {/* REPLACE WITH ADD REVIEW BUTTON */}
-        <Button onClick={writeReview}>
-          <h3>Submit Review</h3>
-        </Button>
+        <Popup></Popup>
         <br />
         <br />
         <br />
@@ -147,7 +145,6 @@ const FirestoreService = () => {
           return (
             <div key={review.id}>
               <Card>
-                <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                   <Card.Text>
                     <Container>
