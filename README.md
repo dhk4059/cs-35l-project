@@ -6,6 +6,7 @@ The frontend was built with React with Firebase as the backend.
 
 Make sure node.js is installed, and if not, install it here:
 https://nodejs.org/en/
+
 Make sure git is also installed, and if not, install it here:
 https://git-scm.com/downloads
 
