@@ -23,9 +23,7 @@ const Home = () => {
           
           <Col md={{ span: 6, offset: 6 }}>
             <div className="text-center">
-              <Button type="button" className="btn btn-primary" onClick={logout}>
-                <h5>Log Out</h5>
-              </Button>
+              
               &nbsp;&nbsp;&nbsp;
               {/* link to filter search page */}
               <Link
@@ -44,6 +42,11 @@ const Home = () => {
                 >
                   <h5>Housing List</h5>
                 </Link>
+
+                <Button type="button" className="btn btn-primary" onClick={logout}>
+                  <h5>Log Out</h5>
+                </Button>
+
             </div>
           </Col>
         </Row>
@@ -85,13 +88,7 @@ const Home = () => {
               <Col>
                 
               </Col>
-              <Col>
-                <div className="text-center">
-                  <Button variant="primary" onClick={logout}>
-                    <h5>Log Out</h5>
-                  </Button>
-                </div>
-              </Col>
+              
             </Row>
           </nav>
         </div>
