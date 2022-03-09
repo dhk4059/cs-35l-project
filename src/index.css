@@ -54,3 +54,8 @@ h6 {
 .a {
   background-image: linear-gradient(0deg, rgb(65, 182, 236) 39%, rgb(202, 246, 255) 100%);
 }
+
+.scroll {
+  max-height: 275px;
+  overflow-y: auto;
+}
