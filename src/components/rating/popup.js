@@ -2,7 +2,6 @@ import Modal from 'react-bootstrap/Modal'
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import Rating from './rating.js'
-
 function Popup() {
   const [show, setShow] = useState(false)
 
@@ -20,15 +19,24 @@ function Popup() {
           <Modal.Title>Write a Review</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+
+
           <Rating></Rating>
+
+
+
+          <right>
+            <br></br>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            </right>
+
+       
+          
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          
         </Modal.Footer>
       </Modal>
     </>

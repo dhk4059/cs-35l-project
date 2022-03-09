@@ -9,6 +9,8 @@ import {
   limitToLast,
 } from "firebase/database";
 
+import { Link } from 'react-router-dom'
+
 const FilterSearchService = () => {
   var [show, setShow] = useState(0);
   var [filter, setFilter] = useState("");
@@ -34,10 +36,15 @@ const FilterSearchService = () => {
   };
 
   return (
+    <div className="a">
+        
+  
+
     <div className="d-flex justify-content-center">
       <div>
-        <h2>Filter Search Example using Firebase Database</h2>
+        {/* <h2>Filter Search Example using Firebase Database</h2> */}
         <br />
+        <center>
         <h3>Choose a Filter:</h3>
         <DropdownButton
           id="dropdown-basic-button"
@@ -64,9 +71,11 @@ const FilterSearchService = () => {
           </Dropdown.Item>
         </DropdownButton>
         <br />
+        </center>
         <div style={{ overflowY: "auto" }}>
           {show ? (
             housing.map((attr, idx) => (
+              <center>
               <Card
                 className="text-left mt-3"
                 key={idx}
@@ -119,13 +128,32 @@ const FilterSearchService = () => {
                   >
                     {"Proximity to Campus: " + attr["uclaProximity"]}
                   </h5>
+                  <br></br>
+                  <div className="text-center">
+                  <Link
+                        style={{ textDecoration: 'none' }}
+                        to={'/' + attr['title'].replace(' ', '-').toLowerCase()}
+                        type="button"
+                        className="btn btn-primary"
+                        
+
+                        // This opens links in a new tab
+                        // target="_blank"
+                      >
+                      <center>
+                        Check it out!
+                      </center>
+                      </Link>
+                      </div>
                 </Card.Body>
               </Card>
+              </center>
             ))
           ) : (
             <h3>Choose an Option</h3>
           )}
         </div>
+      </div>
       </div>
     </div>
   );
