@@ -5,12 +5,13 @@ import App from './App'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import FirestoreService from './components/FirestoreService'
-import FilterSearchService from './components/FilterSearchService'
+import FilterSearchService from './components/searchbar/SearchBar'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './util/firebaseConfig'
 import PersonalListService from './components/PersonalListService'
 import HousingPage from './components/rating/HousingPage'
 import DatabaseService from './components/rating/DatabaseService'
+import Data from './util/housingData'
 
 onAuthStateChanged(auth, (currentUser) => {
   ReactDOM.render(
@@ -26,7 +27,7 @@ onAuthStateChanged(auth, (currentUser) => {
             <Route path="firestore-test" element={<FirestoreService />}></Route>
             <Route
               path="filtersearch-test"
-              element={<FilterSearchService />}
+              element={<FilterSearchService placeholder="what do u seek" data = {Data} />}
             ></Route>
             <Route
               path="personallist-test"
