@@ -22,7 +22,7 @@ onAuthStateChanged(auth, (currentUser) => {
           <Route path="/" element={<App user={currentUser} />}>
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/housing-page" element={<HousingPage />}></Route>
-            <Route path="/:id" element={<DatabaseService />}></Route>
+            <Route path="/:id" element={<FirestoreService />}></Route>
             <Route path="firestore-test" element={<FirestoreService />}></Route>
             <Route
               path="filtersearch-test"
