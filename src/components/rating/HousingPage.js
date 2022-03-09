@@ -70,8 +70,6 @@ const HousingPage = () => {
                   <Card.Text>
                     {'Proximity to Campus: ' + attr['uclaProximity']}
                   </Card.Text>
-<<<<<<< HEAD
-=======
                   <div style={{ border: '3px solid', width: '300px' }}>
                     <center>
                       <Link
@@ -84,7 +82,6 @@ const HousingPage = () => {
                       </Link>
                     </center>
                   </div>
->>>>>>> main
                 </Card.Body>
               </Card>
             ))
