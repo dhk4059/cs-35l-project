@@ -144,7 +144,7 @@ const FirestoreService = () => {
         <br />
         {allReviews.map((review) => {
           return (
-            <div key={review.id}>
+            <div key={review.id} className= "scroll">
               <Card>
                 <Card.Body>
                   <Card.Text>
