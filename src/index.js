@@ -9,6 +9,7 @@ import FilterSearchService from './components/FilterSearchService'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './util/firebaseConfig'
 import PersonalListService from './components/preferred_housing_list/PersonalListService'
+import HomePage from './components/rating/HomePage'
 import HousingPage from './components/rating/HousingPage'
 // import DatabaseService from './components/rating/DatabaseService'
 import UnknownPage from './components/UnknownPage'
@@ -19,8 +20,9 @@ onAuthStateChanged(auth, (currentUser) => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App user={currentUser} />}>
-            <Route path="/" element={<HousingPage />}></Route>
-            <Route path="/:id" element={<FirestoreService />}></Route>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/housing-page" element={<HousingPage />}></Route>
+            <Route path="/:id" element={<DatabaseService />}></Route>
             <Route path="firestore-test" element={<FirestoreService />}></Route>
             <Route
               path="filtersearch-test"
