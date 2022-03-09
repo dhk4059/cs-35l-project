@@ -35,7 +35,7 @@ const RatingPlacard = ({ housingData }) => {
                       housingData["overallRating"]["ratingSum"] /
                         housingData["overallRating"]["totalReviewers"]
                     ).toFixed(2)
-                  : "Overall Quality n/a"}
+                  : "Overall Quality: n/a"}
               </h4>
               <br />
               <div className="placardFilters">
