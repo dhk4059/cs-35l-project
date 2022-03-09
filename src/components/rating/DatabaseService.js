@@ -6,6 +6,7 @@ import {
   Col,
   Dropdown,
   DropdownButton,
+  Card,
 } from 'react-bootstrap'
 import { db } from '../../util/firebaseConfig'
 import { onValue, ref, set, update } from 'firebase/database'
@@ -65,42 +66,27 @@ const DatabaseService = () => {
     return <Loading></Loading>
   }
   return hasData ? (
-    <Container className="justify-content-center" style={{ minHeight: '75vh' }}>
+    <Container
+      className="d-flex justify-content-center"
+      style={{ minHeight: '75vh' }}
+    >
       <center>
-        <h1>Residential Building: {title}</h1>
+        <Card
+          style={{
+            // width: '25rem',
+            // height: '25rem',
+            border: '3px solid',
+          }}
+        >
+          <Card.Body>
+            <Card.Title>
+              <h1>Residential Building: {title}</h1>
+            </Card.Title>
+          </Card.Body>
+        </Card>
         <br />
         <br />
-        <br />
-        <h1>Choose a Number Rating</h1>
-        <Row className="w-50">
-          <Col>
-            <Button onClick={() => changeRating(1)} className="ps-3 pe-3">
-              <h1>1</h1>
-            </Button>
-          </Col>
-          <Col>
-            <Button onClick={() => changeRating(2)} className="ps-3 pe-3">
-              <h1>2</h1>
-            </Button>
-          </Col>
-          <Col>
-            <Button onClick={() => changeRating(3)} className="ps-3 pe-3">
-              <h1>3</h1>
-            </Button>
-          </Col>
-          <Col>
-            <Button onClick={() => changeRating(4)} className="ps-3 pe-3">
-              <h1>4</h1>
-            </Button>
-          </Col>
-          <Col>
-            <Button onClick={() => changeRating(5)} className="ps-3 pe-3">
-              <h1>5</h1>
-            </Button>
-          </Col>
-        </Row>
-        <br />
-        <br />
+        <h2>Choose which rating to show</h2>
         <DropdownButton
           id="dropdown-basic-button"
           title="Filter"

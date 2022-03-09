@@ -21,3 +21,16 @@ code {
 input[type="radio"]{
   visibility:hidden;
 }
+
+
+.averageRatings {
+  border-right: 3px solid;
+}
+
+h2 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+h4 {
+  font-family: 'Ubuntu', sans-serif;
+}

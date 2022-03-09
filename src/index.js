@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import FirestoreService from "./components/FirestoreService";
-import FilterSearchService from "./components/FilterSearchService";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./util/firebaseConfig";
-import PersonalListService from "./components/PersonalListService";
-import HousingPage from "./components/rating/HousingPage";
-import DatabaseService from "./components/rating/DatabaseService";
-import UnknownPage from "./components/UnknownPage";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import FirestoreService from './components/FirestoreService'
+import FilterSearchService from './components/FilterSearchService'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './util/firebaseConfig'
+import PersonalListService from './components/preferred_housing_list/PersonalListService'
+import HousingPage from './components/rating/HousingPage'
+import DatabaseService from './components/rating/DatabaseService'
+import UnknownPage from './components/UnknownPage'
 
 onAuthStateChanged(auth, (currentUser) => {
   ReactDOM.render(
@@ -35,6 +35,6 @@ onAuthStateChanged(auth, (currentUser) => {
         </Routes>
       </BrowserRouter>
     </React.StrictMode>,
-    document.getElementById("root")
-  );
-});
+    document.getElementById('root'),
+  )
+})

@@ -12,7 +12,7 @@ import {
   } from 'firebase/firestore'
 
 const Rating = () => {
-    const [userReview, setReview] = useState('')
+  const [userReview, setReview] = useState('')
     const ref = collection(firestore, 'reviews')
     const writeReview = async () => {
         if (userReview.length > 0) {
@@ -28,20 +28,34 @@ const Rating = () => {
         }
       }
 
-    return(
-        <div>
-            <StarRating></StarRating>
+  return (
+    <div>
+      <StarRating></StarRating>
+      
+      <br></br>
+      <br></br>
 
-            <form>
-                <label for="comment">Additional Comments:</label>
-                <textarea class="form-control" id="comment" rows="3" max-rows="5" placeholder="Add any additional comments here" onChange={(event) => {
-              setReview(event.target.value)
-            }}></textarea>
-            </form>
+      <form>
+        <label for="comment">Additional Comments:</label>
+        <textarea
+          class="form-control"
+          id="comment"
+          rows="3"
+          max-rows="5"
+          placeholder="Add any additional comments here"
+          onChange={(event) => {
+            setReview(event.target.value)}}
+        ></textarea>
+      </form>
 
-            <button type="button" class="btn btn-primary btn-lg" onClick={writeReview} >Submit</button>
-        </div>
-    )
+      <br></br>
+      <br></br>
+
+      <button type="button" class="btn btn-primary btn-lg" onClick={writeReview}>
+        Submit
+      </button>
+    </div>
+  )
 }
 
 export default Rating
