@@ -1,52 +1,54 @@
-import { useState } from 'react'
-import { Col, Row, Button, Form, Container } from 'react-bootstrap'
+import { useEffect, useState } from "react";
+import { Col, Row, Button, Form, Container } from "react-bootstrap";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
-} from 'firebase/auth'
-import { auth } from '../util/firebaseConfig'
+} from "firebase/auth";
+import { auth } from "../util/firebaseConfig";
 
 const AuthService = () => {
-  const [isLogin, setChoice] = useState(true)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [isLogin, setChoice] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [user, setUser] = useState({})
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser)
-  })
+  const [user, setUser] = useState({});
 
   const register = async () => {
-    var user
+    var user;
     try {
-      user = await createUserWithEmailAndPassword(auth, email, password)
+      user = await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
-    return user
-  }
+    return user;
+  };
 
   const login = async () => {
-    var user
+    var user;
     try {
-      user = await signInWithEmailAndPassword(auth, email, password)
+      user = await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
-    return user
-  }
+    return user;
+  };
 
   const logout = async () => {
-    await signOut(auth)
-  }
+    await signOut(auth);
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
 
   return (
     <Container
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: "100vh" }}
     >
       <div>
         <h1 className="text-center">Login Demo </h1>
@@ -56,7 +58,7 @@ const AuthService = () => {
           <Col>
             <Button
               onClick={() => setChoice(true)}
-              variant={isLogin ? 'primary' : 'outline-primary'}
+              variant={isLogin ? "primary" : "outline-primary"}
               disabled={isLogin}
             >
               <h3>Login</h3>
@@ -65,7 +67,7 @@ const AuthService = () => {
           <Col>
             <Button
               onClick={() => setChoice(false)}
-              variant={!isLogin ? 'primary' : 'outline-primary'}
+              variant={!isLogin ? "primary" : "outline-primary"}
               disabled={!isLogin}
             >
               <h3>Register</h3>
@@ -75,7 +77,7 @@ const AuthService = () => {
         <Row className="justify-content-md-center">
           <div>
             <h6 className="text-center">
-              {'Enter email/password to ' + (isLogin ? 'login:' : 'register:')}
+              {"Enter email/password to " + (isLogin ? "login:" : "register:")}
             </h6>
           </div>
         </Row>
@@ -88,7 +90,7 @@ const AuthService = () => {
                 //   type="email"
                 placeholder="Enter email"
                 onChange={(event) => {
-                  setEmail(event.target.value)
+                  setEmail(event.target.value);
                 }}
               />
             </Form.Group>
@@ -98,7 +100,7 @@ const AuthService = () => {
                 type="password"
                 placeholder="Password"
                 onChange={(event) => {
-                  setPassword(event.target.value)
+                  setPassword(event.target.value);
                 }}
               />
             </Form.Group>
@@ -106,16 +108,16 @@ const AuthService = () => {
               onClick={async () => {
                 if (isLogin) {
                   login().then((value) => {
-                    console.log(value)
-                  })
+                    console.log(value);
+                  });
                 } else {
                   register().then((value) => {
-                    console.log(value)
-                  })
+                    console.log(value);
+                  });
                 }
               }}
             >
-              <h5>{isLogin ? 'Login' : 'Register'}</h5>
+              <h5>{isLogin ? "Login" : "Register"}</h5>
             </Button>
           </Form>
         </center>
@@ -131,7 +133,7 @@ const AuthService = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default AuthService
+export default AuthService;

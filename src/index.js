@@ -8,8 +8,7 @@ import FirestoreService from './components/FirestoreService'
 import FilterSearchService from './components/FilterSearchService'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './util/firebaseConfig'
-import PersonalListService from './components/PersonalListService'
-import BuildingsList from './components/rating/BuildingsList'
+import PersonalListService from './components/preferred_housing_list/PersonalListService'
 import HousingPage from './components/rating/HousingPage'
 import DatabaseService from './components/rating/DatabaseService'
 import UnknownPage from './components/UnknownPage'
@@ -20,18 +19,8 @@ onAuthStateChanged(auth, (currentUser) => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App user={currentUser} />}>
-            <Route
-              path="/"
-              element={<BuildingsList />}
-            ></Route>
-            <Route
-              path="residential-buildings"
-              element={<HousingPage />}
-            ></Route>
-            <Route
-              path="residential-buildings/:id"
-              element={<DatabaseService />}
-            ></Route>
+            <Route path="/" element={<HousingPage />}></Route>
+            <Route path="/:id" element={<DatabaseService />}></Route>
             <Route path="firestore-test" element={<FirestoreService />}></Route>
             <Route
               path="filtersearch-test"

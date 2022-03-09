@@ -35,7 +35,7 @@ const HousingPage = () => {
   return (
     <Container
       className="d-flex justify-content-center"
-      style={{ minHeight: '75vh' }}
+      // style={{ minHeight: '75vh' }}
     >
       <div>
         {hasData
@@ -70,6 +70,21 @@ const HousingPage = () => {
                   <Card.Text>
                     {'Proximity to Campus: ' + attr['uclaProximity']}
                   </Card.Text>
+<<<<<<< HEAD
+=======
+                  <div style={{ border: '3px solid', width: '300px' }}>
+                    <center>
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        to={'/' + keys[idx]}
+                        // This opens links in a new tab
+                        // target="_blank"
+                      >
+                        <h4>{attr['title'] + ' Page'}</h4>
+                      </Link>
+                    </center>
+                  </div>
+>>>>>>> main
                 </Card.Body>
               </Card>
             ))
