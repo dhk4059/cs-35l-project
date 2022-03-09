@@ -1,61 +1,140 @@
-import { useState, useEffect } from 'react'
-import StarRating from './star-rating.js'
-import { Form } from 'react-bootstrap'
-import { firestore } from '../../util/firebaseConfig'
-import {
-    collection,
-    addDoc,
-    serverTimestamp,
-    getDocs,
-    orderBy,
-    query,
-  } from 'firebase/firestore'
+import { useState } from "react";
+import StarRating from "./star-rating.js";
+import { firestore, db } from "../../util/firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { ref, onValue, update } from "firebase/database";
+import { useParams } from "react-router-dom";
 
-const Rating = () => {
-  const [userReview, setReview] = useState('')
-    const ref = collection(firestore, 'reviews')
-    const writeReview = async () => {
-        if (userReview.length > 0) {
-          try {
-            const docRef = await addDoc(ref, {
-              review: userReview,
-              timestamp: serverTimestamp(),
-            })
-            console.log('document written with id: ', docRef.id)
-          } catch (e) {
-            console.log(e)
-          }
-        }
+const Rating = ({ closePopUp, resetView }) => {
+  const params = useParams();
+  const [userReview, setReview] = useState("");
+  const [overallRating, setOverallRating] = useState(null);
+  const [proximityToCampus, setProximityToCampus] = useState(null);
+  const [accessibilityToFood, setAccessibilityToFood] = useState(null);
+  const [proximityToParking, setProximityToParking] = useState(null);
+  const [accessToEssentials, setAccessToEssentials] = useState(null);
+  const [noiseLevel, setNoiseLevel] = useState(null);
+  const [showWarning, setShowWarning] = useState(false);
+  const [hasStars, setHasStars] = useState(false);
+  // let hasStars = false;
+
+  const writeReview = async () => {
+    if (userReview.length > 0) {
+      try {
+        const docRef = await addDoc(collection(firestore, params.id), {
+          overallRating: overallRating,
+          uclaProximity: proximityToCampus,
+          foodAccess: accessibilityToFood,
+          parkingProximity: proximityToParking,
+          noiseLevel: noiseLevel,
+          essentialsQuality: accessToEssentials,
+          review: userReview,
+          timestamp: serverTimestamp(),
+        });
+        console.log("document written with id: ", docRef.id);
+        changeRatings();
+        closePopUp();
+        resetView();
+      } catch (e) {
+        console.log(e);
       }
+    } else if (hasStars) {
+      console.log("wrote only to DB");
+      changeRatings();
+      closePopUp();
+    } else {
+      setShowWarning(true);
+    }
+  };
+
+  const changeRatings = async () => {
+    let data;
+    onValue(ref(db, "ratings/" + params.id), (snapshot) => {
+      data = snapshot.val();
+      if (accessToEssentials !== null) {
+        data["essentialsQuality"]["ratingSum"] += accessToEssentials;
+        data["essentialsQuality"]["totalReviewers"] += 1;
+      }
+      if (accessibilityToFood !== null) {
+        data["foodAccess"]["ratingSum"] += accessibilityToFood;
+        data["foodAccess"]["totalReviewers"] += 1;
+      }
+      if (noiseLevel !== null) {
+        data["noiseLevel"]["ratingSum"] += noiseLevel;
+        data["noiseLevel"]["totalReviewers"] += 1;
+      }
+      if (overallRating !== null) {
+        data["overallRating"]["ratingSum"] += overallRating;
+        data["overallRating"]["totalReviewers"] += 1;
+      }
+      if (proximityToParking !== null) {
+        data["parkingProximity"]["ratingSum"] += proximityToParking;
+        data["parkingProximity"]["totalReviewers"] += 1;
+      }
+      if (proximityToCampus !== null) {
+        data["uclaProximity"]["ratingSum"] += proximityToCampus;
+        data["uclaProximity"]["totalReviewers"] += 1;
+      }
+    });
+    update(ref(db, "ratings/" + params.id), data);
+  };
 
   return (
     <div>
-      <StarRating></StarRating>
-      
+      <StarRating
+        overall_rating={overallRating}
+        proximity_to_campus={proximityToCampus}
+        accessibility_to_food={accessibilityToFood}
+        parking={proximityToParking}
+        access_to_essentials={accessToEssentials}
+        noise_level={noiseLevel}
+        saveOverallRating={(value) => setOverallRating(value)}
+        saveProximityToCampus={(value) => setProximityToCampus(value)}
+        saveAccessibilityToFood={(value) => setAccessibilityToFood(value)}
+        saveParking={(value) => setProximityToParking(value)}
+        saveAccessToEssentials={(value) => setAccessToEssentials(value)}
+        saveNoiseLevel={(value) => setNoiseLevel(value)}
+        setFlag={() => setHasStars(true)}
+      ></StarRating>
+
       <br></br>
       <br></br>
 
       <form>
-        <label for="comment">Additional Comments:</label>
+        <label>Leave a Review:</label>
         <textarea
-          class="form-control"
+          className="form-control"
           id="comment"
           rows="3"
           max-rows="5"
-          placeholder="Add any additional comments here"
+          placeholder="Leave your review..."
           onChange={(event) => {
-            setReview(event.target.value)}}
+            event.preventDefault();
+            setReview(event.target.value);
+          }}
         ></textarea>
       </form>
 
       <br></br>
       <br></br>
-
-      <button type="button" class="btn btn-primary btn-lg" onClick={writeReview}>
+      <div
+        style={{
+          height: "25px",
+          color: "red",
+          visibility: showWarning ? "visible" : "hidden",
+        }}
+      >
+        Please Rate or Review.
+      </div>
+      <button
+        type="button"
+        className="btn btn-primary btn-lg"
+        onClick={writeReview}
+      >
         Submit
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Rating
+export default Rating;

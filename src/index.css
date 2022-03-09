@@ -1,61 +1,73 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-input[type="radio"]{
-  visibility:hidden;
-}
-
-
-.averageRatings {
-  border-right: 3px solid;
+input[type="radio"] {
+  visibility: hidden;
 }
 
 h1 {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 h2 {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 h3 {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 h4 {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 h5 {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 h6 {
-  font-family: 'Ubuntu', sans-serif;
-}
-
-.checkItOutLink {
-  color: #003B5C;
-  background-color: white;
-}
-
-
-.a {
-  background-image: linear-gradient(0deg, rgb(65, 182, 236) 39%, rgb(202, 246, 255) 100%);
+  font-family: "Ubuntu", sans-serif;
 }
 
 .scroll {
   max-height: 275px;
   overflow-y: auto;
+}
+
+.homePageListElement {
+  background-color: #2774ae;
+  border-radius: 5px;
+  border: 1px solid;
+  color: #ffd100;
+  width: 300px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.homePageListElement:hover {
+  background-color: #005bc4;
+}
+
+.searchResults {
+  background-color: white;
+}
+
+.searchResults:hover {
+  cursor: pointer;
+  background-color: #add2fd;
+}
+
+.placardFilters {
+  padding-bottom: 10px;
 }

@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Col, Row, Button, Form, Container } from "react-bootstrap";
+import { Col, Row, Button, Form } from "react-bootstrap";
 import {
   createUserWithEmailAndPassword,
-  signOut,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../util/firebaseConfig";
@@ -11,7 +10,7 @@ const AuthService = () => {
   const [isLogin, setChoice] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const register = async () => {
     var user;
     try {
@@ -32,18 +31,29 @@ const AuthService = () => {
     return user;
   };
 
-  const logout = async () => {
-    await signOut(auth);
+  const authenticate = async () => {
+    if (isLogin) {
+      login().then((value) => {
+        console.log(value);
+      });
+    } else {
+      register().then((value) => {
+        console.log(value);
+      });
+    }
   };
 
   return (
-    <Container
+    <div
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
+      style={{
+        minHeight: "100vh",
+        width: "100%",
+        backgroundImage: `url("https://admission.ucla.edu/sites/default/files/hero-landing-images/campus-downtown-2x.jpg")`,
+      }}
     >
       <div>
-        <h1 className="text-center">Login Demo </h1>
-        <br />
+        <h1 className="text-center">Login</h1>
         <br />
         <Row xs="auto" className="justify-content-md-center">
           <Col>
@@ -76,54 +86,31 @@ const AuthService = () => {
         <center>
           <Form>
             <Form.Group className="mb-4">
-              <Form.Label>Email address</Form.Label>
               <Form.Control
-                //   type="email"
                 placeholder="Enter email"
                 onChange={(event) => {
+                  event.preventDefault();
                   setEmail(event.target.value);
                 }}
               />
             </Form.Group>
             <Form.Group className="mb-4">
-              <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
                 onChange={(event) => {
+                  event.preventDefault();
                   setPassword(event.target.value);
                 }}
               />
             </Form.Group>
-            <Button
-              onClick={async () => {
-                if (isLogin) {
-                  login().then((value) => {
-                    console.log(value);
-                  });
-                } else {
-                  register().then((value) => {
-                    console.log(value);
-                  });
-                }
-              }}
-            >
+            <Button onClick={authenticate}>
               <h5>{isLogin ? "Login" : "Register"}</h5>
             </Button>
           </Form>
         </center>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <div className="text-center">
-          <Button variant="secondary" onClick={logout}>
-            <h5>Log Out</h5>
-          </Button>
-        </div>
       </div>
-    </Container>
+    </div>
   );
 };
 

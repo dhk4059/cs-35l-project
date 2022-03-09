@@ -5,11 +5,12 @@ import housingData from "../../util/housingData";
 
 const Container = styled.div`
   margin: 8px;
-  border: 1px solid black;
   padding: 8px;
   margin-bottom: 8px;
-  border-radius: 2px;
-  background-color: ${(props) => (props.isDragging ? "green" : "white")};
+  border: 3px solid;
+  color: #ffd100;
+  border-radius: 8px;
+  background-color: #2774ae;
   transition: background-color 0.3s ease;
 `;
 
@@ -31,14 +32,7 @@ const ListElement = (props) => {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            <h6
-              style={{
-                color: snapshot.isDragging ? "white" : "black",
-                fontWeight: "bold",
-              }}
-            >
-              {housingData[props.houseKey]}
-            </h6>
+            <h6>{housingData[props.houseKey]}</h6>
           </Container>
         </Link>
       )}

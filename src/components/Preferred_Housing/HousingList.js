@@ -6,7 +6,7 @@ import Loading from "../Misc/Loading";
 import ListView from "./ListView";
 import housingData from "../../util/housingData";
 
-const PersonalListService = () => {
+const HousingList = () => {
   const user = auth.currentUser;
   const [prefs, setPrefs] = useState([]);
   const [makePrefs, setMakePrefs] = useState([]);
@@ -158,11 +158,11 @@ const PersonalListService = () => {
           <center>
             <Button
               onClick={() => setIsViewList(false)}
-              variant={!isViewList ? "success" : "outline-success"}
+              variant={!isViewList ? "primary" : "outline-primary"}
               style={{ width: "25vh" }}
               disabled={disableMakeListButton}
             >
-              <h2 className="text-center">Make List</h2>
+              <h2 className="text-center">Create List</h2>
             </Button>
           </center>
         </div>
@@ -171,7 +171,6 @@ const PersonalListService = () => {
             className="d-flex justify-content-center"
             style={{
               width: "50vh",
-              backgroundColor: "lightblue",
             }}
           >
             {prefs !== null ? (
@@ -213,7 +212,7 @@ const PersonalListService = () => {
               </Button>
             ) : showUpdateButton && showMakeListButton && !isViewList ? (
               <Button onClick={makeList}>
-                <h5>Make List</h5>
+                <h5>Create List</h5>
               </Button>
             ) : null}
           </div>
@@ -223,4 +222,4 @@ const PersonalListService = () => {
   );
 };
 
-export default PersonalListService;
+export default HousingList;

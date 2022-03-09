@@ -34,7 +34,6 @@ const HomePage = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-
   return (
     <center>
       <img
@@ -42,30 +41,24 @@ const HomePage = () => {
         alt="Hill map"
         width="960"
         height="650"
+        style={{ borderRadius: "20px" }}
       ></img>
 
       <Container
         className="d-flex justify-content-center"
-        style={{ minHeight: "75vh" }}
+        style={{ minHeight: "75vh", maxWidth: "60vw" }}
       >
         <Col>
           <div style={{ marginTop: "50px" }}>
             {titlesA.length !== 0
               ? titlesA.map((title, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      backgroundColor: "#DAEBFE",
-                      border: "1px solid",
-                      width: "300px",
-                    }}
-                  >
+                  <div className="homePageListElement" key={idx}>
                     <center>
                       <Link
                         style={{ textDecoration: "none" }}
                         to={"/" + keysA[idx]}
                       >
-                        <h4>{title + " Page"}</h4>
+                        <h4 style={{ color: "#FFD100" }}>{title}</h4>
                       </Link>
                     </center>
                   </div>
@@ -77,20 +70,13 @@ const HomePage = () => {
           <div style={{ marginTop: "50px" }}>
             {titlesB.length !== 0
               ? titlesB.map((title, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      backgroundColor: "#DAEBFE",
-                      border: "1px solid",
-                      width: "300px",
-                    }}
-                  >
+                  <div className="homePageListElement" key={idx}>
                     <center>
                       <Link
                         style={{ textDecoration: "none" }}
                         to={"/" + keysB[idx]}
                       >
-                        <h4>{title + " Page"}</h4>
+                        <h4 style={{ color: "#FFD100" }}>{title}</h4>
                       </Link>
                     </center>
                   </div>
@@ -102,20 +88,13 @@ const HomePage = () => {
           <div style={{ marginTop: "50px" }}>
             {titlesC.length !== 0
               ? titlesC.map((title, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      backgroundColor: "#DAEBFE",
-                      border: "1px solid",
-                      width: "300px",
-                    }}
-                  >
+                  <div className="homePageListElement" key={idx}>
                     <center>
                       <Link
                         style={{ textDecoration: "none" }}
                         to={"/" + keysC[idx]}
                       >
-                        <h4>{title + " Page"}</h4>
+                        <h4 style={{ color: "#FFD100" }}>{title}</h4>
                       </Link>
                     </center>
                   </div>

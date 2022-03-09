@@ -6,12 +6,13 @@ import { Button } from "react-bootstrap";
 
 const DNDArea = styled.div`
   margin: 4px;
-  border: 3px solid blue;
   padding: 8px;
   flex-direction: column;
   width: 235px;
   overflow-y: auto;
   height: 50vh;
+  background-color: #daebfe;
+  border-radius: 20px;
 `;
 // visibility: ${(props) =>
 // props.isVisible && props.columnOrder === "1" ? "hidden" : "visible"};
@@ -123,21 +124,22 @@ const ListView = (props) => {
                 style={{
                   width: "235px",
                   margin: "4px",
-                  border: "3px solid blue",
                   padding: "8px",
+                  borderRadius: "20px",
                   justifyContent: "center",
                   alignItems: "center",
                   display: "flex",
+                  backgroundColor: "#daebfe",
                 }}
               >
                 <Button
                   variant="outline-primary"
-                  style={{ borderWidth: "2px" }}
+                  style={{ borderWidth: "3px" }}
                   onClick={props.disableMakeList}
                 >
-                  <h6 style={{ fontWeight: "bold", color: "black" }}>
+                  <h5 style={{ fontWeight: "bold", color: "black" }}>
                     Add More Dorms
-                  </h6>
+                  </h5>
                 </Button>
               </div>
             ) : (
@@ -149,6 +151,7 @@ const ListView = (props) => {
                         padding: "8px",
                         flexGrow: 1,
                         minHeight: "400px",
+                        backgroundColor: "#daebfe",
                       }}
                       ref={provided.innerRef}
                       {...provided.droppableProps}
