@@ -3,7 +3,7 @@ import { Col, Row, Button } from "react-bootstrap";
 import { signOut } from "firebase/auth";
 import { auth } from "../util/firebaseConfig";
 import { GiBirdHouse } from "react-icons/gi";
-import { FilterSearchService } from "./FilterSearchService.js"
+import { FilterSearchService } from "./FilterSearchService.js";
 
 const Home = () => {
   const logout = async () => {
@@ -12,36 +12,8 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        <GiBirdHouse />
-        <Row className="mt-3">
-          
-          <Col md={{ span: 6, offset: 6 }}>
-            <div className="text-center">
-              <Button type="button" className="btn btn-primary" onClick={logout}>
-                <h5>Log Out</h5>
-              </Button>
-              &nbsp;&nbsp;&nbsp;
-              {/* link to filter search page */}
-              <Link
-                  to="/filtersearch-test"
-                  type="button"
-                  className="btn btn-primary"
-                >
-                  <h5>Filter Search</h5>
-                </Link>
-                &nbsp;&nbsp;&nbsp;
-                {/* link to personal list */}
-                <Link
-                  to="/personallist-test"
-                  type="button"
-                  className="btn btn-primary"
-                >
-                  <h5>Housing List</h5>
-                </Link>
-            </div>
-          </Col>
-        </Row>
+      <div style={{ backgroundColor: "paleturquoise", paddingTop: "20px" }}>
+        
         <div>
           <nav style={{ borderBottom: "solid 3px", paddingBottom: "1rem" }}>
             <Row>
@@ -52,7 +24,17 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4 className="text-center">Star Ratings</h4>
+                  <h4 className="text-center">Home</h4>
+                </Link>
+              </Col>
+              <Col>
+                <Link
+                  to="/filtersearch-test"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <h4 className="text-center">Filter Search</h4>
                 </Link>
               </Col>
               <Col>
@@ -62,20 +44,15 @@ const Home = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <h4 className="text-center">Written Reviews</h4>
+                  <h4 className="text-center">Housing List</h4>
                 </Link>
               </Col>
               <Col>
-              </Col>
-              <Col>
-                
-              </Col>
-              <Col>
-                <div className="text-center">
+                {/* <div className="text-center"> */}
                   <Button variant="primary" onClick={logout}>
                     <h5>Log Out</h5>
                   </Button>
-                </div>
+                {/* </div> */}
               </Col>
             </Row>
           </nav>
