@@ -5,6 +5,7 @@ import { auth } from "../util/firebaseConfig";
 import { GiBirdHouse } from "react-icons/gi";
 import { FilterSearchService } from "./FilterSearchService.js";
 
+
 const Home = () => {
   const logout = async () => {
     await signOut(auth);
