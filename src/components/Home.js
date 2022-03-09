@@ -14,7 +14,10 @@ const Home = () => {
       <div>
         <GiBirdHouse />
         <Row className="mt-3">
-          <Col md={{ span: 4, offset: 9 }}>
+          <Col md={4}>
+            <h2>Navigation Bar:</h2>
+          </Col>
+          <Col md={{ span: 4, offset: 4 }}>
             <div className="text-center">
               <Button variant="primary" onClick={logout}>
                 <h5>Log Out</h5>
@@ -22,12 +25,13 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-        <div style={{marginTop: "20px"}}>
+        <p>*In other words, all routing is done below this navigation bar.</p>
+        <div>
           <nav style={{ borderBottom: 'solid 3px', paddingBottom: '1rem' }}>
             <Row>
-              <Col >
+              <Col>
                 <Link to="/">
-                  <h4>Home</h4>
+                  <h4>List of Buildings</h4>
                 </Link>
               </Col>
               <Col>

@@ -5,7 +5,7 @@ import { Card, Container, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Loading from '../Loading'
 
-const HomePage = () => {
+const BuildingsList = () => {
   
   const [hasData, setHasData] = useState(0)
   const [data, setData] = useState([])
@@ -67,4 +67,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default BuildingsList

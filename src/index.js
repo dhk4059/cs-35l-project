@@ -9,7 +9,7 @@ import FilterSearchService from './components/FilterSearchService'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './util/firebaseConfig'
 import PersonalListService from './components/PersonalListService'
-import HomePage from './components/rating/HomePage'
+import BuildingsList from './components/rating/BuildingsList'
 import HousingPage from './components/rating/HousingPage'
 import DatabaseService from './components/rating/DatabaseService'
 import UnknownPage from './components/UnknownPage'
@@ -22,7 +22,7 @@ onAuthStateChanged(auth, (currentUser) => {
           <Route path="/" element={<App user={currentUser} />}>
             <Route
               path="/"
-              element={<HomePage />}
+              element={<BuildingsList />}
             ></Route>
             <Route
               path="residential-buildings"
