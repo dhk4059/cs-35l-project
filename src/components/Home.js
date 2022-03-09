@@ -11,7 +11,12 @@ const Home = () => {
   };
 
   return (
-    <div>
+    
+    <div style={{ 
+      backgroundImage: `url("https://admission.ucla.edu/sites/default/files/hero-landing-images/campus-downtown-2x.jpg")` 
+    }}>
+      
+      <div>
       <div>
         <GiBirdHouse />
         <Row className="mt-3">
@@ -45,9 +50,19 @@ const Home = () => {
         <div>
           <nav style={{ borderBottom: "solid 3px", paddingBottom: "1rem" }}>
             <Row>
-              <Col>
+            <Col>
                 <Link
                   to="/"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <h4 className="text-center">Home</h4>
+                </Link>
+              </Col>
+              <Col>
+                <Link
+                  to="/housing-page"
                   style={{
                     textDecoration: "none",
                   }}
@@ -84,6 +99,10 @@ const Home = () => {
       <div style={{ marginTop: "50px" }}>
         <Outlet></Outlet>
       </div>
+    </div>
+
+
+
     </div>
   );
 };

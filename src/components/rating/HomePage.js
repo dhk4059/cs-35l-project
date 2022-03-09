@@ -5,7 +5,7 @@ import { Card, Container, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Loading from '../Loading'
 
-const BuildingsList = () => {
+const HomePage = () => {
   
   const [hasData, setHasData] = useState(0)
   const [data, setData] = useState([])
@@ -49,11 +49,11 @@ const BuildingsList = () => {
         <div style={{marginTop: "50px"}}>
         {hasData ? data.map((attr, idx) => (
                                       
-          <div style={{ border: '1px solid', width: '300px' }}>
+          <div style={{ backgroundColor: 'white', border: '1px solid', width: '300px' }}>
             <center>
               <Link
                 style={{ textDecoration: 'none' }}
-                to={'/residential-buildings/' + keys[idx]}
+                to={'/' + keys[idx]}
               >
                 <h4>{attr['title'] + ' Page'}</h4>
               </Link>
@@ -67,4 +67,4 @@ const BuildingsList = () => {
   )
 }
 
-export default BuildingsList
+export default HomePage
