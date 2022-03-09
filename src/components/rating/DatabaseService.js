@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
   Container,
-  Card,
   Button,
   Row,
   Col,
@@ -20,7 +19,6 @@ const DatabaseService = () => {
   const [yourRating, setYourRating] = useState('')
   const [otherRating, setOtherRating] = useState('')
   const [filter, setFilter] = useState('overallRating')
-  const [data, setData] = useState([])
   const [hasData, setHasData] = useState(true)
   const [isLoading, setLoading] = useState(true)
   const params = useParams()
@@ -70,55 +68,78 @@ const DatabaseService = () => {
         <br />
         <br />
         <br />
-        <img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png"
-        alt="Building image" width = "240" height = "240">
-        </img>
+        <h1>Choose a Number Rating</h1>
+        <Row className="w-50">
+          <Col>
+            <Button onClick={() => changeRating(1)} className="ps-3 pe-3">
+              <h1>1</h1>
+            </Button>
+          </Col>
+          <Col>
+            <Button onClick={() => changeRating(2)} className="ps-3 pe-3">
+              <h1>2</h1>
+            </Button>
+          </Col>
+          <Col>
+            <Button onClick={() => changeRating(3)} className="ps-3 pe-3">
+              <h1>3</h1>
+            </Button>
+          </Col>
+          <Col>
+            <Button onClick={() => changeRating(4)} className="ps-3 pe-3">
+              <h1>4</h1>
+            </Button>
+          </Col>
+          <Col>
+            <Button onClick={() => changeRating(5)} className="ps-3 pe-3">
+              <h1>5</h1>
+            </Button>
+          </Col>
+        </Row>
         <br />
         <br />
-        <br />
-        <Container
-        className="d-flex justify-content-center"
-        style={{ minHeight: '75vh' }}
+        <DropdownButton
+          id="dropdown-basic-button"
+          title="Filter"
+          menuVariant="dark"
         >
-          <div style={{ border: '3px solid', width: '300px' }}>
-            {hasData
-              ? data.map((attr, idx) => (
-                  <Card
-                    className="text-left mt-3"
-                    key={idx}
-                    style={{
-                      width: '25rem',
-                      height: '22rem',
-                      border: '3px solid',
-                    }}
-                  >
-                    <Card.Body>
-                      <Card.Title>
-                        <h1>{attr['title']}</h1>
-                      </Card.Title>
-                      <Card.Text>
-                        {'Overall Rating: ' + attr['overallRating']}
-                      </Card.Text>
-                      <br />
-                      <Card.Text>
-                        {'Quality of Essentials: ' + attr['essentialsQuality']}
-                      </Card.Text>
-                      <Card.Text>
-                        {'Access to Food: ' + attr['foodAccess']}
-                      </Card.Text>
-                      <Card.Text>{'Noise Level: ' + attr['noiseLevel']}</Card.Text>
-                      <Card.Text>
-                        {'Proximity to Parking: ' + attr['parkingProximity']}
-                      </Card.Text>
-                      <Card.Text>
-                        {'Proximity to Campus: ' + attr['uclaProximity']}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                ))
-              : null}
-          </div>
-        </Container>      
+          <Dropdown.Item onClick={() => setFilter('overallRating')}>
+            <h3>Overall Rating</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('essentialsQuality')}>
+            <h3>Quality of Essentials</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('foodAccess')}>
+            <h3>Access to Food</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('noiseLevel')}>
+            <h3>Noise Level</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('parkingProximity')}>
+            <h3>Proximity to Parking</h3>
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setFilter('uclaProximity')}>
+            <h3>Proximity to Campus</h3>
+          </Dropdown.Item>
+        </DropdownButton>
+        <br />
+        <br />
+        <br />
+        <h1>Current Rating:</h1>
+        <h2>
+          {totalReviewers > 0
+            ? parseFloat(ratingSum / totalReviewers).toFixed(2)
+            : null}
+        </h2>
+        <br />
+        <br />
+        <h1>Current Filter:</h1>
+        <h2>{filter}</h2>
+        <br />
+        <br />
+        <br />
+        <h3>{yourRating}</h3>
+        <h3>{otherRating}</h3>
       </center>
     </Container>
   ) : (
