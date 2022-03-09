@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Dropdown, DropdownButton } from "react-bootstrap";
 import { auth, db } from "../../util/firebaseConfig";
 import { onValue, ref, set } from "firebase/database";
-import Loading from "../Loading";
+import Loading from "../Misc/Loading";
 import ListView from "./ListView";
 import housingData from "../../util/housingData";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { IoIosStar } from "react-icons/io";
 import { Container, Button, Card } from "react-bootstrap";
-import { firestore } from "../util/firebaseConfig";
+import { firestore } from "../../util/firebaseConfig";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import {
@@ -12,9 +12,10 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import Loading from "./Loading";
-import "../images/delta-terrace.jpg";
-import Popup from './rating/popup.js'
+import Loading from "../Misc/Loading";
+import Popup from "./popup.js";
+import "../../images/delta-terrace.jpg";
+
 const FirestoreService = () => {
   const [userReview, setReview] = useState("");
   const [allReviews, setAllReviews] = useState([]);
@@ -127,7 +128,7 @@ const FirestoreService = () => {
               <Col>
                 <figure className="figure">
                   <img
-                    src={require("../images/delta-terrace.jpg")}
+                    src={require("../../images/delta-terrace.jpg")}
                     className="figure-img img-fluid rounded"
                   ></img>
                 </figure>

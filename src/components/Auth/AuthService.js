@@ -1,20 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Col, Row, Button, Form, Container } from "react-bootstrap";
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "../util/firebaseConfig";
+import { auth } from "../../util/firebaseConfig";
 
 const AuthService = () => {
   const [isLogin, setChoice] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [user, setUser] = useState({});
-
+  
   const register = async () => {
     var user;
     try {
@@ -38,12 +35,6 @@ const AuthService = () => {
   const logout = async () => {
     await signOut(auth);
   };
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-  }, []);
 
   return (
     <Container
