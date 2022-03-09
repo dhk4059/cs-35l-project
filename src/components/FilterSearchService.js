@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, Card, DropdownButton, Dropdown, Button } from 'react-bootstrap'
+import { Container, Card, DropdownButton, Dropdown } from 'react-bootstrap'
 import { db } from '../util/firebaseConfig'
 import {
   onValue,
@@ -8,7 +8,6 @@ import {
   query,
   limitToLast,
 } from 'firebase/database'
-import {Link} from 'react-router-dom'
 
 const FilterSearchService = () => {
   var [show, setShow] = useState(0)
@@ -40,7 +39,7 @@ const FilterSearchService = () => {
       style={{ minHeight: '75vh' }}
     >
       <div>
-        {/* <h2>Filter Search Example using Firebase Database</h2> */}
+        <h2>Filter Search Example using Firebase Database</h2>
         <br />
         <h3>Choose a Filter:</h3>
         <DropdownButton
@@ -71,17 +70,10 @@ const FilterSearchService = () => {
         <div className="search">
           {show ? (
             housing.map((attr, idx) => (
-              <center>
               <Card
                 className="text-left mt-3"
                 key={idx}
-                style={{ 
-                  width: '25rem', 
-                  height: '25rem', 
-                  border: '3px solid',
-                  color: '#003B5C',
-                  //backgroundColor: '#DAEBFE',
-                }}
+                style={{ width: '25rem', height: '25rem', border: '3px solid' }}
               >
                 <Card.Body>
                   <Card.Title>
@@ -130,26 +122,8 @@ const FilterSearchService = () => {
                   >
                     {'Proximity to Campus: ' + attr['uclaProximity']}
                   </h5>
-                  <br></br>
-                  <div className="text-center">
-                  <Link
-                        style={{ textDecoration: 'none' }}
-                        to={'/' + attr['title'].replace(' ', '-').toLowerCase()}
-                        type="button"
-                        className="btn btn-primary"
-                        
-
-                        // This opens links in a new tab
-                        // target="_blank"
-                      >
-                      <center>
-                        Check it out!
-                      </center>
-                      </Link>
-                      </div>
                 </Card.Body>
               </Card>
-              </center>
             ))
           ) : (
             <h3>Choose an Option</h3>

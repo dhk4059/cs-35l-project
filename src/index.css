@@ -27,33 +27,10 @@ input[type="radio"]{
   border-right: 3px solid;
 }
 
-h1 {
-  font-family: 'Ubuntu', sans-serif;
-}
-
 h2 {
-  font-family: 'Ubuntu', sans-serif;
-}
-
-h3 {
   font-family: 'Ubuntu', sans-serif;
 }
 
 h4 {
   font-family: 'Ubuntu', sans-serif;
 }
-
-h5 {
-  font-family: 'Ubuntu', sans-serif;
-}
-
-h6 {
-  font-family: 'Ubuntu', sans-serif;
-}
-
-.checkItOutLink {
-  color: #003B5C;
-  background-color: white;
-}
-
-
