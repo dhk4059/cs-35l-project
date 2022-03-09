@@ -23,7 +23,7 @@ const Rating = () => {
       <br></br>
       <br></br>
 
-      <button type="button" class="btn btn-primary btn-lg">
+      <button type="button" className="btn btn-primary btn-lg">
         Submit
       </button>
     </div>
