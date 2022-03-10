@@ -26,10 +26,10 @@ onAuthStateChanged(auth, (currentUser) => {
             <Route path="/:id" element={<RatingsMainPage />}></Route>
             <Route path="login" element={<AuthService />}></Route>
             <Route path="ratings" element={<RatingsMainPage />}></Route>
-            <Route path="filteredsearch" element={<FilteredSearch />}></Route>
+            <Route path="filtered-search" element={<FilteredSearch />}></Route>
             <Route
 
-              path="housinglist"
+              path="preferred-housing"
               element={currentUser !== null ? <HousingList /> : <NeedLogin />}
 
             ></Route>

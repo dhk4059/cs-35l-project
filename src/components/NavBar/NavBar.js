@@ -58,7 +58,7 @@ const NavBar = () => {
                   <div style={{ paddingTop: "10px" }}>
                     <h4>
                       <Link
-                        to="/housinglist"
+                        to="/preferred-housing"
                         style={{ textDecoration: "none" }}
                       >
                         Preferred Housing
@@ -70,7 +70,7 @@ const NavBar = () => {
                   <div style={{ paddingTop: "10px" }}>
                     <h4>
                       <Link
-                        to="/filteredsearch"
+                        to="/filtered-search"
                         style={{ textDecoration: "none" }}
                       >
                         Filtered Search
