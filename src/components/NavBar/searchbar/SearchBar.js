@@ -8,20 +8,22 @@ import CloseIcon from "@material-ui/icons/Close";
 //note the placeholder is the text that will appear in the box and the data should be
 // the dictionary passed in to be parsed
 function SearchBar({ placeholder, data }) {
-  const [filteredData, setFilteredData] = useState([]);
-  const [wordEntered, setWordEntered] = useState("");
+  const [filteredData, setFilteredData] = useState([]);//sets up the filtereddata array and the function call to edit it with useState
+  const [wordEntered, setWordEntered] = useState("");//sets up the user input string and function call to edit it
 
-  const handleFilter = (event) => {
-    const searchWord = event.target.value;
+  const handleFilter = (event) => {//this function essentially runs everytime the user changes the search bar input
+    const searchWord = event.target.value;//sets searchword to be whats inside the bar
     setWordEntered(searchWord);
+    //the filter function takes an array, and iterates through it
+    //in this case newFilter represents an array of results where an entry in the data inlcudes the search bar input anywhere
     const newFilter = Object.values(data).filter((value) => {
       return value.toLowerCase().includes(searchWord.toLowerCase());
     });
     if (searchWord === "") {
-      setFilteredData([]);
+      setFilteredData([]);//resets filterData if there is no input in the searchbar
     } else {
       // console.log(newFilter);
-      setFilteredData(newFilter);
+      setFilteredData(newFilter);//now the data that should be shown is the ones that got output by filter.
     }
   };
   const clearInput = () => {
