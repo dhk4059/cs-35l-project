@@ -1,5 +1,9 @@
 import { IoIosStar } from "react-icons/io";
 
+// Takes in a firestore DB object and generates
+// the written review left by each user, where each
+// review is stored within the firestore DB call object.
+
 const WrittenReviewCard = ({ firestoreObject }) => {
   const listStars = (num) => {
     if (num !== null) {

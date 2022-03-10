@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import housingData from "../../util/housingData";
 
-const SearchBar = () => {
+// Search bar element that parses through 'titles' array
+// for matches from the user's search query string,
+// showing an overlay list of the results.
+
+const SearchBar = ({ titles }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const titles = Object.values(housingData);
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState("");
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -28,11 +30,11 @@ const SearchBar = () => {
         type="text"
         placeholder="Search"
         onChange={(event) => {
+          // search functionality:
           event.preventDefault();
           let searchString = event.target.value;
           setSearch(searchString);
           let results = [];
-
           if (searchString.length > 0) {
             searchString = searchString.toLowerCase().trim();
             titles.forEach((title) => {

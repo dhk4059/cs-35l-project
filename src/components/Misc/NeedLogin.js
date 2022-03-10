@@ -1,3 +1,7 @@
+// Page that displays in place of Preferred Housing 
+// when user is not logged in, as non-users shouldn't
+// be able to view/create user-specific lists
+
 const NeedLogin = () => {
   return (
     <div

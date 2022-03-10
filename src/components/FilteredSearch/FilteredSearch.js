@@ -1,9 +1,15 @@
-import { useState } from "react";
-import { Card, DropdownButton, Dropdown } from "react-bootstrap";
+import { useEffect, useState, useRef } from "react";
+import { Card } from "react-bootstrap";
 import { db } from "../../util/firebaseConfig";
 import { onValue, ref, orderByChild, query } from "firebase/database";
-
+import DropDownFilter from "./DropDownFilter";
 import { Link } from "react-router-dom";
+
+// Filtered Search page
+// User chooses a filter to sort by, and a backend DB call returns
+// a list of dorms ordered by the chosen filter from highest to lowest rating.
+// This list is then displayed using a programmatically generated list of
+// cards.
 
 const FilteredSearch = () => {
   const [show, setShow] = useState(false);
@@ -21,99 +27,58 @@ const FilteredSearch = () => {
     ["uclaProximity", "Proximity to Campus: "],
   ];
   const [order, setOrder] = useState(initialOrder.slice(1, 6));
+  const [searchFilter, setSearchFilter] = useState("overallRating");
+  const [choseFilter, setChoseFilter] = useState(false);
 
-  const searchResults = (searchFilter) => {
-    // get data
-    const unsubscribe = onValue(
-      query(ref(db, "filterDB"), orderByChild(searchFilter)),
-      (snapshot) => {
-        let housing = new Array(snapshot.size);
-        let i = snapshot.size - 1;
-        snapshot.forEach((child) => {
-          housing[i] = child.val();
-          i -= 1;
-        });
+  // We use useRef() in order to preserve the reference to initialOrder
+  // without creating a new one to avoid chance of mem leak.
+  const orderRef = useRef(initialOrder);
 
-        // look for filter in initialOrder, get the index, and remove the element in filters
-        // then replace topFilter with the temp
-        let filters = initialOrder;
-        for (let i = 0; i < initialOrder.length; i++) {
-          if (searchFilter === initialOrder[i][0]) {
-            let temp = initialOrder[i];
-            filters.splice(i, 1);
-            setTopFilter(temp);
-            setOrder(filters);
-            break;
-          }
-        }
-
-        setShow(true);
-        setHousing(housing);
-      }
-    );
-    return unsubscribe;
+  const searchResults = (filter) => {
+    setSearchFilter(filter);
+    setChoseFilter(true);
   };
 
+  useEffect(() => {
+    if (choseFilter) {
+      const unsubscribe = onValue(
+        query(ref(db, "filterDB"), orderByChild(searchFilter)),
+        (snapshot) => {
+          let housing = new Array(snapshot.size);
+          let i = snapshot.size - 1;
+          snapshot.forEach((child) => {
+            housing[i] = child.val();
+            i -= 1;
+          });
+
+          // look for filter in initialOrder, get the index, and remove the element in filters
+          // then replace topFilter with the temp
+          let filters = orderRef;
+          for (let i = 0; i < orderRef.length; i++) {
+            if (searchFilter === orderRef[i][0]) {
+              let temp = orderRef[i];
+              filters.splice(i, 1);
+              setTopFilter(temp);
+              setOrder(filters);
+              break;
+            }
+          }
+          setChoseFilter(false);
+          setShow(true);
+          setHousing(housing);
+        }
+      );
+      return unsubscribe;
+    } else {
+      return () => {};
+    }
+  }, [searchFilter, choseFilter]);
+
+  // render the dropdown and the cards once the ordered list has data
   return (
     <div className="d-flex justify-content-center">
       <div>
-        <center>
-          <DropdownButton
-            id="dropdown-basic-button"
-            title="Choose a Filter"
-            menuVariant="dark"
-          >
-            <Dropdown.Item
-              onClick={(event) => {
-                event.preventDefault();
-                searchResults("overallRating");
-              }}
-            >
-              <h4>Overall Quality</h4>
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={(event) => {
-                event.preventDefault();
-                searchResults("essentialsQuality");
-              }}
-            >
-              <h4>Quality of Essentials</h4>
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={(event) => {
-                event.preventDefault();
-                searchResults("foodAccess");
-              }}
-            >
-              <h4>Access to Food</h4>
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={(event) => {
-                event.preventDefault();
-                searchResults("noiseLevel");
-              }}
-            >
-              <h4>Noise Level</h4>
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={(event) => {
-                event.preventDefault();
-                searchResults("parkingProximity");
-              }}
-            >
-              <h4>Proximity to Parking</h4>
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={(event) => {
-                event.preventDefault();
-                searchResults("uclaProximity");
-              }}
-            >
-              <h4>Proximity to Campus</h4>
-            </Dropdown.Item>
-          </DropdownButton>
-          <br />
-        </center>
+        <DropDownFilter setFilter={searchResults}></DropDownFilter>
         <div>
           {show ? (
             housing.map((attr, idx) => (

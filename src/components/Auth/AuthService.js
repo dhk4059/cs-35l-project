@@ -8,6 +8,13 @@ import {
 import { auth } from "../../util/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
+// Login Page
+// Runs authentication via email/password authentication.
+// If an account exists, users can sign in with that account.
+// Otherwise, users can register an account.
+// Basic error checking for emails already existing or wrong
+// passwords being given for an email.
+
 const AuthService = () => {
   const [isLogin, setChoice] = useState(true);
   const [email, setEmail] = useState("");
@@ -16,6 +23,7 @@ const AuthService = () => {
   const [checkingAuth, setCheckingAuth] = useState(true);
   const navigate = useNavigate();
 
+  // try to register user
   const register = async () => {
     var user;
     try {
@@ -26,6 +34,7 @@ const AuthService = () => {
     return user;
   };
 
+  // try to login user
   const login = async () => {
     var user;
     try {
@@ -36,6 +45,8 @@ const AuthService = () => {
     return user;
   };
 
+  // try to authenticate user using the result of either
+  // login() or register()
   const authenticate = async () => {
     if (isLogin) {
       login().then((value) => {
@@ -54,6 +65,8 @@ const AuthService = () => {
     }
   };
 
+  // Listen for change in user's login status to see whether
+  // to display the login page or not for the user.
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser !== null) {
@@ -65,6 +78,7 @@ const AuthService = () => {
     return unsubscribe;
   }, []);
 
+  // Loading page while waiting for async authentication
   if (checkingAuth) {
     return (
       <div
@@ -79,6 +93,7 @@ const AuthService = () => {
       </div>
     );
   }
+  // Element to render if user is already logged in
   if (alreadyLoggedIn) {
     return (
       <center>
@@ -107,6 +122,7 @@ const AuthService = () => {
       </center>
     );
   }
+  // Login Page displayed when user is not signed in
   return (
     <div
       className="d-flex justify-content-center"

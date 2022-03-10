@@ -4,9 +4,14 @@ import { auth, db } from "../../util/firebaseConfig";
 import { onValue, ref, set } from "firebase/database";
 import Loading from "../Misc/Loading";
 import ListView from "./ListView";
-import housingData from "../../util/housingData";
 
-const HousingList = () => {
+// Preferred Housing Main Page
+// Gets list of dorm names from index.js via Route 
+// The list of preferred housing is read from DB
+// to create a list of elements.
+// Users can make multiple lists and create new lists.
+
+const HousingList = ({ housingTitles }) => {
   const user = auth.currentUser;
   const [prefs, setPrefs] = useState([]);
   const [makePrefs, setMakePrefs] = useState([]);
@@ -17,7 +22,6 @@ const HousingList = () => {
   const [showEditListButton, setShowEditListButton] = useState(false);
   const [showMakeListButton, setShowMakeListButton] = useState(false);
   const [disableMakeListButton, setDisableMakeListButton] = useState(false);
-  const housingTitles = Object.keys(housingData);
   const [housingKeys, setHousingKeys] = useState(housingTitles);
 
   const disableButton = () => {
@@ -88,19 +92,24 @@ const HousingList = () => {
   };
 
   useEffect(() => {
-    onValue(ref(db, "userPrefs/" + user.uid), (snapshot) => {
-      try {
-        const data = snapshot.val();
+    const unsubscribe = onValue(
+      ref(db, "userPrefs/" + user.uid),
+      (snapshot) => {
+        try {
+          const data = snapshot.val();
 
-        // console.log(data);
-        // console.log("DB CALL");
-        setPrefs(data);
-        setLoading(false);
-      } catch (e) {
-        console.log(e);
-        setLoading(false);
+          // console.log(data);
+          // console.log("DB CALL");
+          setPrefs(data);
+          setLoading(false);
+        } catch (e) {
+          console.log(e);
+          setLoading(false);
+        }
       }
-    });
+    );
+
+    return unsubscribe;
   }, [user.uid, setShowEditListButton]);
 
   if (isLoading) {

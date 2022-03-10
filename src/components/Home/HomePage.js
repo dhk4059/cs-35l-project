@@ -1,39 +1,17 @@
-import { db } from "../../util/firebaseConfig";
-import { onValue, ref } from "firebase/database";
-import { useEffect, useState } from "react";
 import { Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Loading from "../Misc/Loading";
 
-const HomePage = () => {
-  const [titles, setTitles] = useState([]);
-  const [keys, setKeys] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const titlesA = titles.slice(0, 8);
-  const titlesB = titles.slice(8, 16);
-  const titlesC = titles.slice(16, 24);
+// Displays Home (Home on the navbar or '/' as the path route)
+// A list of dorm names is retrieved from index.js' initial DB call.
+
+const HomePage = ({ housingTitles, keys }) => {
+  const titlesA = housingTitles.slice(0, 8);
+  const titlesB = housingTitles.slice(8, 16);
+  const titlesC = housingTitles.slice(16, 24);
   const keysA = keys.slice(0, 8);
   const keysB = keys.slice(8, 16);
   const keysC = keys.slice(16, 24);
 
-  useEffect(() => {
-    onValue(ref(db, "housingTitles"), (snapshot) => {
-      var housingTitles = [];
-      var housingKeys = [];
-      snapshot.forEach((child) => {
-        housingTitles.push(child.val());
-        housingKeys.push(child.key);
-      });
-      setTitles(housingTitles);
-      setKeys(housingKeys);
-      setLoading(false);
-    });
-    return () => {};
-  }, []);
-
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
   return (
     <center>
       <img

@@ -1,7 +1,10 @@
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import housingData from "../../util/housingData";
+
+// Creates a preferred list item that can
+// be dragged within the Drag area defined
+// by ListView.js
 
 const Container = styled.div`
   margin: 8px;
@@ -16,13 +19,13 @@ const Container = styled.div`
 
 const ListElement = (props) => {
   return (
-    <Draggable draggableId={props.houseKey} index={props.index}>
+    <Draggable draggableId={props.housingTitle} index={props.index}>
       {(provided, snapshot) => (
         <Link
           style={{
             textDecoration: "none",
           }}
-          to={"/" + props.houseKey}
+          to={"/" + props.housingTitle.toLowerCase().replace(' ', '-')}
           // This opens links in a new tab
           target="_blank"
         >
@@ -32,7 +35,7 @@ const ListElement = (props) => {
             ref={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            <h6>{housingData[props.houseKey]}</h6>
+            <h6>{props.housingTitle}</h6>
           </Container>
         </Link>
       )}

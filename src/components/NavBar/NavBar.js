@@ -6,22 +6,30 @@ import SearchBar from "./SearchBar";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const NavBar = () => {
+// Navigation Bar
+// This navbar stays at the top of the page, with re-rendering
+// mostly happening below the page.
+
+const NavBar = ({ housingTitles }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(auth.currentUser);
   const [checkingAuth, setCheckingAuth] = useState(true);
 
+  // If logout, then sign user out and navigate to login page
   const logout = async () => {
     await signOut(auth);
     setUser(null);
     navigate("/login");
   };
 
+  // Navigate to login page.
   const login = () => {
     navigate("/login");
   };
 
   useEffect(() => {
+    // check if auth is already signed in or not to determine
+    // what the Login/LogOut button does
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser !== null) {
         setUser(currentUser);
@@ -42,7 +50,7 @@ const NavBar = () => {
               maxWidth: "90vw",
             }}
           >
-            <SearchBar></SearchBar>
+            <SearchBar titles={housingTitles}></SearchBar>
             <div style={{ marginTop: "15px" }}>
               <Row>
                 <Col>

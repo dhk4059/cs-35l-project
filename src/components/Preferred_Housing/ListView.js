@@ -4,6 +4,13 @@ import styled from "styled-components";
 import ListElement from "./ListElement";
 import { Button } from "react-bootstrap";
 
+// creates an area where items can be dragged and dropped,
+// generating the preferred lists and items necessary to
+// be able to drag/drop them
+
+// styled components npm package was also used as an experiment
+// in using different styling methods
+
 const DNDArea = styled.div`
   margin: 4px;
   padding: 8px;
@@ -107,7 +114,7 @@ const ListView = (props) => {
                           <ListElement
                             key={house}
                             index={index}
-                            houseKey={house}
+                            housingTitle={house}
                           ></ListElement>
                         );
                       })}
@@ -164,7 +171,7 @@ const ListView = (props) => {
                           <ListElement
                             key={house}
                             index={index}
-                            houseKey={house}
+                            housingTitle={house}
                           ></ListElement>
                         );
                       })}

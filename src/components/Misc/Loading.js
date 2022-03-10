@@ -1,3 +1,6 @@
+// Loading Page that we render when waiting for async
+// backend calls
+
 const Loading = () => {
   return (
     <div

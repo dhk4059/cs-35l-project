@@ -1,5 +1,9 @@
 import { Card, Col, Row } from "react-bootstrap";
 
+// Create the placard that shows the dorm's
+// ratings and photo using data passed to this
+// element from RatingsMainPage.js
+
 const RatingPlacard = ({ housingData }) => {
   return (
     <Card

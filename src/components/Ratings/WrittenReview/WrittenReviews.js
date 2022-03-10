@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import WrittenReviewCard from "./WrittenReviewCard.js";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
+// Calls to Firebase Firestore DB for written review objects, where each object
+// contains the review, the timestamp of the review, along with the star ratings
+// set by the reviewer (with a null rating in case only a text review was submitted).
+
 const WrittenReviews = ({ houseKey, resetList }) => {
   const [allReviews, setAllReviews] = useState([]);
   const [isLoading, setLoading] = useState(true);

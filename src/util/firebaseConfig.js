@@ -1,3 +1,15 @@
+// Firebase api and config set up for access to the
+// Firebase project set up. For convenience and for the
+// purposes of this MVP project, the config is stored
+// within a .js file. Normally, it would be safer to
+// store within .env.
+
+// This app uses several features of Firebase:
+// - user authentication via email/password
+// - firebase database for ratings
+// - firebase firestore for text reviews
+// - firebase hosting to host the web app outside of localhost
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";

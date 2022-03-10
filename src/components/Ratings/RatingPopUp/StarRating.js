@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-//use "rating" to show what is stored
+// User sets a star rating in this component, which is sent back to
+// Rating.js, the parent of StarRating.js
 
 const StarRating = ({
   overall_rating,

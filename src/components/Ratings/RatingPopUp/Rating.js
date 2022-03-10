@@ -5,6 +5,9 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, onValue, update } from "firebase/database";
 import { useParams } from "react-router-dom";
 
+// The section of the popup that is responsible for letting
+// users leave star ratings.
+
 const Rating = ({ closePopUp, resetView }) => {
   const params = useParams();
   const [userReview, setReview] = useState("");

@@ -4,6 +4,8 @@ import { Button } from "react-bootstrap";
 import Rating from "./Rating.js";
 import { auth } from "../../../util/firebaseConfig.js";
 
+// Create a Popup for users to leave ratings/reviews with
+
 function Popup({ setReset }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

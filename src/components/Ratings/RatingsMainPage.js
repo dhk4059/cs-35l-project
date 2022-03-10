@@ -8,6 +8,13 @@ import Popup from "./RatingPopUp/PopUp.js";
 import RatingPlacard from "./InfoPlacard/RatingPlacard";
 import WrittenReviews from "./WrittenReview/WrittenReviews";
 
+// Main page for each housing, displaying both the ratings placard
+// along with a list of written text reviews if they are available.
+// A Firebase Database call is made, and the resulting data is 
+// displayed using this page, as the status of the data also
+// determines whether to show the page or a 404 error's unknown
+// page due to the data being null.
+
 const RatingsMainPage = () => {
   const params = useParams();
   const [isLoading, setLoading] = useState(true);
