@@ -18,12 +18,13 @@ function Popup({ setReset }) {
       >
         <h4>Add a Review</h4>
       </Button>
-
+      {/* popup once add review is clicked */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Write a Review</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/* popup content with review in the form of star ratings and text */}
           <Rating closePopUp={handleClose} resetView={setReset}></Rating>
 
           <br></br>

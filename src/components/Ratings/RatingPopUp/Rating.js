@@ -17,7 +17,7 @@ const Rating = ({ closePopUp, resetView }) => {
   const [showWarning, setShowWarning] = useState(false);
   const [hasStars, setHasStars] = useState(false);
   // let hasStars = false;
-
+  // passes reviews for accessibility to food, proximity to UCLA, parking, access to essentials, noise level to the database
   const writeReview = async () => {
     if (userReview.length > 0) {
       try {
