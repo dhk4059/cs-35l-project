@@ -34,7 +34,7 @@ const Rating = ({ closePopUp, resetView }) => {
           review: userReview,
           timestamp: serverTimestamp(),
         });
-        console.log("document written with id: ", docRef.id);
+        // console.log("document written with id: ", docRef.id);
         changeRatings();
         closePopUp();
         resetView();
@@ -42,7 +42,7 @@ const Rating = ({ closePopUp, resetView }) => {
         console.log(e);
       }
     } else if (hasStars) {
-      console.log("wrote only to DB");
+      // console.log("wrote only to DB");
       changeRatings();
       closePopUp();
     } else {

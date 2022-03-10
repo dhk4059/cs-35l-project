@@ -20,7 +20,7 @@ function SearchBar({ placeholder, data }) {
     if (searchWord === "") {
       setFilteredData([]);
     } else {
-      console.log(newFilter);
+      // console.log(newFilter);
       setFilteredData(newFilter);
     }
   };

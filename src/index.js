@@ -34,7 +34,7 @@ var housingTitles = [];
 onAuthStateChanged(auth, (currentUser) => {
   if (!hasData) {
     onValue(ref(db, "housingTitles"), (snapshot) => {
-      console.log(snapshot.val());
+      // console.log(snapshot.val());
       hasData = true;
       housingTitles = Object.values(snapshot.val());
       housingKeys = Object.keys(snapshot.val());

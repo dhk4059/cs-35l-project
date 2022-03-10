@@ -50,14 +50,14 @@ const AuthService = () => {
   const authenticate = async () => {
     if (isLogin) {
       login().then((value) => {
-        console.log(value);
+        // console.log(value);
         if (value !== undefined) {
           navigate("/", { replace: true });
         }
       });
     } else {
       register().then((value) => {
-        console.log(value);
+        // console.log(value);
         if (value !== undefined) {
           navigate("/", { replace: true });
         }
