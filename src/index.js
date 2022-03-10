@@ -14,30 +14,35 @@ import UnknownPage from "./components/Misc/UnknownPage";
 import AuthService from "./components/Auth/AuthService";
 import NeedLogin from "./components/Misc/NeedLogin";
 import { onValue, ref } from "firebase/database";
+import DiningMainPage from "./components/DiningHalls/DiningMainPage";
 
 // Before rendering the react app, 2 listeners :
 // 1) We listen for any changes to the auth status of the user
 //    to determine how much access the user has to the web app.
 //    For instance, a non-logged-in user would not be able to
 //    view preferred housing lists, as you need to be logged in for that.
-// 2) We also listen for any changes to 'housingTitles' in Firebase Database
+// 2) We also listen for any changes to 'titles' in Firebase Database
 //    to cache the value before rendering the web app, as the list of housing
-//    titles is used by multiple elements throughout the app, so having the list
-//    already ready is convenient. This also allows us to not have to store
-//    the list of housing names in a global variable to reduce hard-coded data,
+//    and dining titles is used by multiple elements throughout the app, so
+//    having the list already ready is convenient. This also allows us to not have
+//    to store the list of housing/dining names in a global variable to reduce hard-coded data,
 //    as altering a database is much easier than altering hard-coded data,
 //    especially when the data becomes larger in scale.
 
 var hasData = false;
 var housingKeys = [];
 var housingTitles = [];
+var diningKeys = [];
+var diningTitles = [];
 onAuthStateChanged(auth, (currentUser) => {
   if (!hasData) {
-    onValue(ref(db, "housingTitles"), (snapshot) => {
+    onValue(ref(db, "titles"), (snapshot) => {
       // console.log(snapshot.val());
       hasData = true;
-      housingTitles = Object.values(snapshot.val());
-      housingKeys = Object.keys(snapshot.val());
+      housingTitles = Object.values(snapshot.val()["housingTitles"]);
+      housingKeys = Object.keys(snapshot.val()["housingTitles"]);
+      diningTitles = Object.values(snapshot.val()["diningTitles"]);
+      diningKeys = Object.keys(snapshot.val()["diningTitles"]);
       ReactDOM.render(
         <React.StrictMode>
           <BrowserRouter>
@@ -48,13 +53,18 @@ onAuthStateChanged(auth, (currentUser) => {
                   element={
                     <HomePage
                       housingTitles={housingTitles}
-                      keys={housingKeys}
+                      housingKeys={housingKeys}
+                      diningKeys={diningKeys}
+                      diningTitles={diningTitles}
                     />
                   }
                 ></Route>
-                <Route path="/:id" element={<RatingsMainPage />}></Route>
+                <Route
+                  path="/housing/:id"
+                  element={<RatingsMainPage />}
+                ></Route>
                 <Route path="login" element={<AuthService />}></Route>
-                <Route path="ratings" element={<RatingsMainPage />}></Route>
+                <Route path="/dining/:id" element={<DiningMainPage />}></Route>
                 <Route
                   path="filtered-search"
                   element={<FilteredSearch />}
@@ -86,12 +96,17 @@ onAuthStateChanged(auth, (currentUser) => {
               <Route
                 path="/"
                 element={
-                  <HomePage housingTitles={housingTitles} keys={housingKeys} />
+                  <HomePage
+                    housingTitles={housingTitles}
+                    housingKeys={housingKeys}
+                    diningKeys={diningKeys}
+                    diningTitles={diningTitles}
+                  />
                 }
               ></Route>
-              <Route path="/:id" element={<RatingsMainPage />}></Route>
+              <Route path="/housing/:id" element={<RatingsMainPage />}></Route>
               <Route path="login" element={<AuthService />}></Route>
-              <Route path="ratings" element={<RatingsMainPage />}></Route>
+              <Route path="/dining/:id" element={<DiningMainPage />}></Route>
               <Route
                 path="filtered-search"
                 element={<FilteredSearch />}

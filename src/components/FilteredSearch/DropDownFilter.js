@@ -9,7 +9,7 @@ const DropDownFilter = ({ setFilter }) => {
     <center>
       <DropdownButton
         id="dropdown-basic-button"
-        title="Choose a Filter"
+        title="Choose a Housing Filter"
         menuVariant="dark"
       >
         <Dropdown.Item

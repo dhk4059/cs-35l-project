@@ -28,7 +28,7 @@ const SearchBar = ({ titles }) => {
         maxLength={50}
         value={search}
         type="text"
-        placeholder="Search"
+        placeholder="Search dorm names..."
         onChange={(event) => {
           // search functionality:
           event.preventDefault();

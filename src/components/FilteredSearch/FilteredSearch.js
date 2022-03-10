@@ -96,7 +96,7 @@ const FilteredSearch = () => {
                     <div style={{ borderBottom: "solid 2px" }}>
                       <Link
                         style={{ textDecoration: "none" }}
-                        to={"/" + attr["title"].replace(" ", "-").toLowerCase()}
+                        to={"/housing/" + attr["title"].replace(" ", "-").toLowerCase()}
                       >
                         <h1>{attr["title"]}</h1>
                       </Link>

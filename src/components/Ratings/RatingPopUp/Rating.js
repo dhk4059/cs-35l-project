@@ -24,7 +24,7 @@ const Rating = ({ closePopUp, resetView }) => {
   const writeReview = async () => {
     if (userReview.length > 0) {
       try {
-        const docRef = await addDoc(collection(firestore, params.id), {
+        await addDoc(collection(firestore, params.id), {
           overallRating: overallRating,
           uclaProximity: proximityToCampus,
           foodAccess: accessibilityToFood,

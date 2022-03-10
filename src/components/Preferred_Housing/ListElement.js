@@ -25,7 +25,7 @@ const ListElement = (props) => {
           style={{
             textDecoration: "none",
           }}
-          to={"/" + props.housingTitle.toLowerCase().replace(' ', '-')}
+          to={"/housing/" + props.housingTitle.toLowerCase().replace(' ', '-')}
           // This opens links in a new tab
           target="_blank"
         >
