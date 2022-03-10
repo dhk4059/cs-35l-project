@@ -29,9 +29,7 @@ https://l-housing.web.app/
 ## Description
 
 Similar to how Bruinwalk is a service for selecting classes and professors, particularly
-through a student-community perspective, this app serves as a service for rating and selecting on-campus housing in UCLA. Users are able to leave reviews for housing in a couple different categories, of which there is more detail in the key features section, and other users can search based off any of the criteria as well as keep their own curated list of housing for ease of use later. The purpose of this app is also based on the fact that while platforms such as Reddit have students talking about housing, there is no one consolidated place to see all reviews and ratings. 
-
-Due to the fact that there is also no consolidated rating/review website for the dining halls on UCLA, we also added options to view/rate/review said dining halls.
+through a student-community perspective, this app serves as a service for rating/reviewing on-campus housing and dining halls in UCLA. Users are able to leave reviews for housing and dining halls in their respective different categories, and other users can search for housing as well as keep their own curated list of housing for ease of use later. The purpose of this app is also based on the fact that while platforms such as Reddit have students talking about housing and dining halls, there is no one consolidated place to see all reviews and ratings.
 
 
 ## Key Features
