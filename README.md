@@ -1,5 +1,5 @@
 # RateMyResidential - CS 35L Final Project (Winter 2022)
-A web application project for rating and viewing on-campus residential dorms in UCLA.
+A web application project for viewing and rating/reviewing on-campus residential dorms and dining halls in UCLA.
 The frontend was built with React with Firebase as the backend for the database, user
 authentication, and hosting.
 
@@ -29,7 +29,9 @@ https://l-housing.web.app/
 ## Description
 
 Similar to how Bruinwalk is a service for selecting classes and professors, particularly
-through a student-community perspective, this app serves as a service for rating and selecting on-campus housing in UCLA. Users are able to leave reviews for housing in a couple different categories, of which there is more detail in the key features section, and other users can search based off any of the criteria as well as keep their own curated list of housing for ease of use later. The purpose of this app is also based on the fact that while platforms such as Reddit have students talking about housing, there is no one consolidated place to see all reviews and ratings.
+through a student-community perspective, this app serves as a service for rating and selecting on-campus housing in UCLA. Users are able to leave reviews for housing in a couple different categories, of which there is more detail in the key features section, and other users can search based off any of the criteria as well as keep their own curated list of housing for ease of use later. The purpose of this app is also based on the fact that while platforms such as Reddit have students talking about housing, there is no one consolidated place to see all reviews and ratings. 
+
+Due to the fact that there is also no consolidated rating/review website for the dining halls on UCLA, we also added options to view/rate/review said dining halls.
 
 
 ## Key Features
@@ -42,11 +44,11 @@ Users will be able to view and add ratings in the form of star ratings and text 
     
 ### 2) Upload Data from Client to Back-end:
 
-Ratings uploaded by users will be saved in the application’s database along with user reviews written with a text form. The preferred housing lists created/modified by users will also be uploaded/called by and from the database.
+Ratings for dorms and dining halls uploaded by users will be saved in the application’s database along with user reviews written with a text form. The preferred housing lists created/modified by users will also be uploaded/called by and from the database.
     
 ### 3) Meaningfully Search through Server-side Data: 
 
-Users will be able to search for housing with specific filters (e.g. accessibility to food, proximity to UCLA, parking, access to essentials, noise level). Not only that, but users can also look up housing names through the search bar, where clicking a result takes the user to the building's page.
+Users will be able to search for housing with specific filters (e.g. accessibility to food, proximity to UCLA, parking, access to essentials, noise level). Not only that, but users can also look up housing names through the search bar, where clicking a result takes the user to the building's page. Due to the small number of dining halls, we decided to limit search options to housing, as searching/making a list of preferred housing holds far more weight than making a small list of preferred dining halls.
     
 ### 4) Unique Feature #1:
 
@@ -54,7 +56,7 @@ User profiles will be done with email/password authentication via Firebase authe
     
 ### 5) Unique Feature #2:
 
-Users will have a live text search that allows for searching specific housing buildings, this is done so that a student will not have to search through a list if they know exactly what they are looking for and can instead find directly what people think about a specific housing option. On the review side of the application, users can submit a text review, a review of ratings (i.e. rating from 1-5), or both.
+Users will have a live text search that allows for searching specific housing buildings, this is done so that a student will not have to search through a list if they know exactly what they are looking for and can instead find directly what people think about a specific housing option. On the review side of the application, users can submit a text review, a review of ratings (i.e. rating from 1-5), or both for both housing and dining halls.
     
 ### 6) Unique Feature #3:  
 
