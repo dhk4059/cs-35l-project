@@ -61,7 +61,7 @@ const NavBar = () => {
                         to="/housinglist"
                         style={{ textDecoration: "none" }}
                       >
-                        Housing List
+                        Preferred Housing
                       </Link>
                     </h4>
                   </div>
