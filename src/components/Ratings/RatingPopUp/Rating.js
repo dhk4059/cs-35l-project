@@ -153,7 +153,10 @@ const Rating = ({ closePopUp, resetView }) => {
       <button
         type="button"
         className="btn btn-primary btn-lg"
-        onClick={writeReview}
+        onClick={(event) => {
+          event.preventDefault();
+          writeReview();
+        }}
       >
         Submit
       </button>

@@ -134,7 +134,8 @@ const HousingList = () => {
                   return (
                     <Dropdown.Item
                       key={index + 1}
-                      onClick={() => {
+                      onClick={(event) => {
+                        event.preventDefault();
                         setListNum(index);
                         setHousingKeys(housingTitles);
                         setMakePrefs([]);
@@ -156,7 +157,10 @@ const HousingList = () => {
         <div className="d-flex align-items-center justify-content-center">
           <center>
             <Button
-              onClick={() => setIsViewList(true)}
+              onClick={(event) => {
+                event.preventDefault();
+                setIsViewList(true);
+              }}
               variant={isViewList ? "primary" : "outline-primary"}
               style={{ width: "25vh", maxWidth: "15rem" }}
             >
@@ -165,7 +169,10 @@ const HousingList = () => {
           </center>
           <center>
             <Button
-              onClick={() => setIsViewList(false)}
+              onClick={(event) => {
+                event.preventDefault();
+                setIsViewList(false);
+              }}
               variant={!isViewList ? "primary" : "outline-primary"}
               style={{ width: "25vh", maxWidth: "15rem" }}
               disabled={disableMakeListButton}
@@ -215,11 +222,21 @@ const HousingList = () => {
           </div>
           <div style={{ height: "50px", padding: "8px", marginTop: "16px" }}>
             {showUpdateButton && showEditListButton && isViewList ? (
-              <Button onClick={updateList}>
+              <Button
+                onClick={(event) => {
+                  event.preventDefault();
+                  updateList();
+                }}
+              >
                 <h5>Update List</h5>
               </Button>
             ) : showUpdateButton && showMakeListButton && !isViewList ? (
-              <Button onClick={makeList}>
+              <Button
+                onClick={(event) => {
+                  event.preventDefault();
+                  makeList();
+                }}
+              >
                 <h5>Create List</h5>
               </Button>
             ) : null}

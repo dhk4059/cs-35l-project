@@ -95,7 +95,12 @@ const AuthService = () => {
               auth.currentUser.email +
               ", you are already logged in."}
           </h1>
-          <Button onClick={() => navigate("/", { replace: true })}>
+          <Button
+            onClick={(event) => {
+              event.preventDefault();
+              navigate("/", { replace: true });
+            }}
+          >
             <h3>Go to Home</h3>
           </Button>
         </div>
@@ -117,7 +122,10 @@ const AuthService = () => {
         <Row xs="auto" className="justify-content-md-center">
           <Col>
             <Button
-              onClick={() => setChoice(true)}
+              onClick={(event) => {
+                event.preventDefault();
+                setChoice(true);
+              }}
               variant={isLogin ? "primary" : "outline-primary"}
             >
               <h3>Login</h3>
@@ -125,7 +133,10 @@ const AuthService = () => {
           </Col>
           <Col>
             <Button
-              onClick={() => setChoice(false)}
+              onClick={(event) => {
+                event.preventDefault();
+                setChoice(false);
+              }}
               variant={!isLogin ? "primary" : "outline-primary"}
             >
               <h3>Register</h3>

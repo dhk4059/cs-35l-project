@@ -38,7 +38,8 @@ const StarRating = ({
                 type="radio"
                 name="rating"
                 value={ratingValue1}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   setFlag();
                   saveOverallRating(ratingValue1);
                 }}
@@ -69,7 +70,8 @@ const StarRating = ({
                 type="radio"
                 name="rating"
                 value={ratingValue1}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   saveProximityToCampus(ratingValue1);
                   setFlag();
                 }}
@@ -100,7 +102,8 @@ const StarRating = ({
                 type="radio"
                 name="rating"
                 value={ratingValue2}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   saveAccessibilityToFood(ratingValue2);
                   setFlag();
                 }}
@@ -131,7 +134,8 @@ const StarRating = ({
                 type="radio"
                 name="rating"
                 value={ratingValue3}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   saveParking(ratingValue3);
                   setFlag();
                 }}
@@ -160,7 +164,8 @@ const StarRating = ({
                 type="radio"
                 name="rating"
                 value={ratingValue4}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   saveAccessToEssentials(ratingValue4);
                   setFlag();
                 }}
@@ -191,7 +196,8 @@ const StarRating = ({
                 type="radio"
                 name="rating"
                 value={ratingValue5}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   saveNoiseLevel(ratingValue5);
                   setFlag();
                 }}

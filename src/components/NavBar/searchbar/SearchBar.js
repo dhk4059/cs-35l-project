@@ -1,4 +1,4 @@
-//credit to the PedroTech youtube channel and specifically video URL https://www.youtube.com/watch?v=x7niho285qs for 
+//credit to the PedroTech youtube channel and specifically video URL https://www.youtube.com/watch?v=x7niho285qs for
 //helping build the skeleton of the search function
 import React, { useState } from "react";
 import "./SearchBar.css";
@@ -42,7 +42,13 @@ function SearchBar({ placeholder, data }) {
           {filteredData.length === 0 ? (
             <SearchIcon />
           ) : (
-            <CloseIcon id="clearBtn" onClick={clearInput} />
+            <CloseIcon
+              id="clearBtn"
+              onClick={(event) => {
+                event.preventDefault();
+                clearInput();
+              }}
+            />
           )}
         </div>
       </div>
@@ -50,7 +56,12 @@ function SearchBar({ placeholder, data }) {
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
-              <a key={key} className="dataItem" href={value.link} target="_blank">
+              <a
+                key={key}
+                className="dataItem"
+                href={value.link}
+                target="_blank"
+              >
                 <p>{value.title} </p>
               </a>
             );

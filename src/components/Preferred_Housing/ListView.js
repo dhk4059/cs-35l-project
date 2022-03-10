@@ -135,7 +135,10 @@ const ListView = (props) => {
                 <Button
                   variant="outline-primary"
                   style={{ borderWidth: "3px" }}
-                  onClick={props.disableMakeList}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    props.disableMakeList();
+                  }}
                 >
                   <h5 style={{ fontWeight: "bold", color: "black" }}>
                     Add More Dorms

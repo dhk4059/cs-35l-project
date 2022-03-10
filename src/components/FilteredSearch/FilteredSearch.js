@@ -63,22 +63,52 @@ const FilteredSearch = () => {
             title="Choose a Filter"
             menuVariant="dark"
           >
-            <Dropdown.Item onClick={() => searchResults("overallRating")}>
+            <Dropdown.Item
+              onClick={(event) => {
+                event.preventDefault();
+                searchResults("overallRating");
+              }}
+            >
               <h4>Overall Quality</h4>
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => searchResults("essentialsQuality")}>
+            <Dropdown.Item
+              onClick={(event) => {
+                event.preventDefault();
+                searchResults("essentialsQuality");
+              }}
+            >
               <h4>Quality of Essentials</h4>
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => searchResults("foodAccess")}>
+            <Dropdown.Item
+              onClick={(event) => {
+                event.preventDefault();
+                searchResults("foodAccess");
+              }}
+            >
               <h4>Access to Food</h4>
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => searchResults("noiseLevel")}>
+            <Dropdown.Item
+              onClick={(event) => {
+                event.preventDefault();
+                searchResults("noiseLevel");
+              }}
+            >
               <h4>Noise Level</h4>
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => searchResults("parkingProximity")}>
+            <Dropdown.Item
+              onClick={(event) => {
+                event.preventDefault();
+                searchResults("parkingProximity");
+              }}
+            >
               <h4>Proximity to Parking</h4>
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => searchResults("uclaProximity")}>
+            <Dropdown.Item
+              onClick={(event) => {
+                event.preventDefault();
+                searchResults("uclaProximity");
+              }}
+            >
               <h4>Proximity to Campus</h4>
             </Dropdown.Item>
           </DropdownButton>

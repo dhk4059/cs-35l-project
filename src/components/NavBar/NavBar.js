@@ -87,7 +87,10 @@ const NavBar = () => {
                     <Button
                       size="sm"
                       variant="primary"
-                      onClick={user !== null ? logout : login}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        user !== null ? logout() : login();
+                      }}
                     >
                       <h4>{user !== null ? "Log Out" : "Log in"}</h4>
                     </Button>

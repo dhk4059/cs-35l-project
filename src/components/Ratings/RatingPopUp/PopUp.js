@@ -13,8 +13,11 @@ function Popup({ setReset }) {
     <>
       <Button
         variant="primary"
-        onClick={handleShow}
-        style={{ visibility: auth.currentUser !== null ? "visible" : "hidden" }} 
+        onClick={(event) => {
+          event.preventDefault();
+          handleShow();
+        }}
+        style={{ visibility: auth.currentUser !== null ? "visible" : "hidden" }}
       >
         <h4>Add a Review</h4>
       </Button>
