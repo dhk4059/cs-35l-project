@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UnknownPage from "../Misc/UnknownPage.js";
 import Loading from "../Misc/Loading";
-import Popup from "./popup";
+import Popup from "./RatingPopUp/PopUp.js";
 import RatingPlacard from "./InfoPlacard/RatingPlacard";
 import WrittenReviews from "./WrittenReview/WrittenReviews";
 
