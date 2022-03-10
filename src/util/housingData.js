@@ -1,3 +1,4 @@
+
 const housingData = {
   // HOUSING KEYS AND TITLES:
   "acacia-view" : "Acacia View",
@@ -27,3 +28,4 @@ const housingData = {
 };
 
 export default housingData
+

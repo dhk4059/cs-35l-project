@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -26,8 +28,10 @@ onAuthStateChanged(auth, (currentUser) => {
             <Route path="ratings" element={<RatingsMainPage />}></Route>
             <Route path="filteredsearch" element={<FilteredSearch />}></Route>
             <Route
+
               path="housinglist"
               element={currentUser !== null ? <HousingList /> : <NeedLogin />}
+
             ></Route>
             <Route path="*" element={<UnknownPage />} />
           </Route>
