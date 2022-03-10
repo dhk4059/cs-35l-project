@@ -30,8 +30,8 @@ import DiningMainPage from "./components/DiningHalls/DiningMainPage";
 //    especially when the data becomes larger in scale.
 
 var hasData = false;
-var housingKeys = [];
-var housingTitles = [];
+var dormKeys = [];
+var dormTitles = [];
 var diningKeys = [];
 var diningTitles = [];
 onAuthStateChanged(auth, (currentUser) => {
@@ -39,21 +39,21 @@ onAuthStateChanged(auth, (currentUser) => {
     onValue(ref(db, "titles"), (snapshot) => {
       // console.log(snapshot.val());
       hasData = true;
-      housingTitles = Object.values(snapshot.val()["housingTitles"]);
-      housingKeys = Object.keys(snapshot.val()["housingTitles"]);
+      dormTitles = Object.values(snapshot.val()["housingTitles"]);
+      dormKeys = Object.keys(snapshot.val()["housingTitles"]);
       diningTitles = Object.values(snapshot.val()["diningTitles"]);
       diningKeys = Object.keys(snapshot.val()["diningTitles"]);
       ReactDOM.render(
         <React.StrictMode>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<App housingTitles={housingTitles} />}>
+              <Route path="/" element={<App housingTitles={dormTitles} />}>
                 <Route
                   path="/"
                   element={
                     <HomePage
-                      housingTitles={housingTitles}
-                      housingKeys={housingKeys}
+                      housingTitles={dormTitles}
+                      housingKeys={dormKeys}
                       diningKeys={diningKeys}
                       diningTitles={diningTitles}
                     />
@@ -73,7 +73,7 @@ onAuthStateChanged(auth, (currentUser) => {
                   path="preferred-housing"
                   element={
                     currentUser !== null ? (
-                      <HousingList housingTitles={housingTitles} />
+                      <HousingList housingData={dormTitles} />
                     ) : (
                       <NeedLogin />
                     )
@@ -92,13 +92,13 @@ onAuthStateChanged(auth, (currentUser) => {
       <React.StrictMode>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<App housingTitles={housingTitles} />}>
+            <Route path="/" element={<App housingTitles={dormTitles} />}>
               <Route
                 path="/"
                 element={
                   <HomePage
-                    housingTitles={housingTitles}
-                    housingKeys={housingKeys}
+                    housingTitles={dormTitles}
+                    housingKeys={dormKeys}
                     diningKeys={diningKeys}
                     diningTitles={diningTitles}
                   />
@@ -115,7 +115,7 @@ onAuthStateChanged(auth, (currentUser) => {
                 path="preferred-housing"
                 element={
                   currentUser !== null ? (
-                    <HousingList housingTitles={housingTitles} />
+                    <HousingList housingData={dormTitles} />
                   ) : (
                     <NeedLogin />
                   )

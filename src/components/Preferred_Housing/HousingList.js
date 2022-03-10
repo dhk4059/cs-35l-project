@@ -11,7 +11,14 @@ import ListView from "./ListView";
 // to create a list of elements.
 // Users can make multiple lists and create new lists.
 
-const HousingList = ({ housingTitles }) => {
+const HousingList = ({ housingData }) => {
+  const housingTitles = [];
+  // Perform a deep copy of housingData so that 
+  // housingData, which should only supply the data,
+  // doesn't get altered.
+  housingData.forEach((element) => {
+    housingTitles.push(element);
+  })
   const user = auth.currentUser;
   const [prefs, setPrefs] = useState([]);
   const [makePrefs, setMakePrefs] = useState([]);
@@ -39,7 +46,9 @@ const HousingList = ({ housingTitles }) => {
     // console.log(prefs[listNum]);
     // console.log("list updated");
     if (disableMakeListButton) {
-      // if true, then we are adding stuff to our list and have to refresh housingKeys when done
+      // if true, then we are addinousingTitles);
+      // console.log(housingData);g stuff to our list and have to refresh housingKeys when done
+      // console.log(h
       setHousingKeys(housingTitles);
       setMakePrefs([]);
       setDisableMakeListButton(false);
