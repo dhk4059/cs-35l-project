@@ -1,4 +1,4 @@
-import { firestore } from "../../util/firebaseConfig";
+import { firestore } from "../../../util/firebaseConfig";
 import { useState, useEffect } from "react";
 import WrittenReviewCard from "./WrittenReviewCard.js";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";

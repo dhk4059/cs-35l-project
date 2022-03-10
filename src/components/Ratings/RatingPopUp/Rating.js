@@ -1,6 +1,6 @@
 import { useState } from "react";
-import StarRating from "./star-rating.js";
-import { firestore, db } from "../../util/firebaseConfig";
+import StarRating from "./StarRating.js";
+import { firestore, db } from "../../../util/firebaseConfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, onValue, update } from "firebase/database";
 import { useParams } from "react-router-dom";

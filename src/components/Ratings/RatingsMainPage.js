@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import UnknownPage from "../Misc/UnknownPage.js";
 import Loading from "../Misc/Loading";
 import Popup from "./popup";
-import RatingPlacard from "./RatingPlacard";
-import WrittenReviews from "./WrittenReviews";
+import RatingPlacard from "./InfoPlacard/RatingPlacard";
+import WrittenReviews from "./WrittenReview/WrittenReviews";
 
 const RatingsMainPage = () => {
   const params = useParams();

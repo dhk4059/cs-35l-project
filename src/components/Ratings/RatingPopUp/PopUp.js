@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import Rating from "./rating.js";
+import Rating from "./Rating.js";
 import { auth } from "../../util/firebaseConfig.js";
 
 function Popup({ setReset }) {
