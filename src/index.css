@@ -47,12 +47,9 @@ h6 {
 
 .homePageListElement {
   background-color: #2774ae;
-  border-radius: 5px;
   border: 1px solid;
   color: #ffd100;
   width: 275px;
-  /* padding-top: 3px;
-  padding-bottom: 3px; */
 }
 
 .homePageListElement:hover {
