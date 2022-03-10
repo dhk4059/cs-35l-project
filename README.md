@@ -1,6 +1,7 @@
 # CS 35L Final Project - RateMyResidential
-Winter 2022 Web application project for rating and viewing housing ratings around UCLA for CS 35L in UCLA.
-The frontend was built with React with Firebase as the backend.
+Winter 2022 Web application project for rating and viewing on-campus residential dorms in UCLA.
+The frontend was built with React with Firebase as the backend for the database, user
+authentication, and hosting.
 
 ## Instructions on installing and running the app:
 
@@ -18,26 +19,42 @@ Once Node.js is installed, run the following commands in terminal in order:
 
 This series of commands will clone the github repository to your local machine
 and install the necessary node modules to run a localhost of the web app. 
+The api key and config needed to call the Firebase database are included during 
+**git clone**, so you can simply run **npm start** immediately.
 
 Alternatively, you can visit the Firebase-hosted web app link here:
 https://l-housing.web.app/
 
 
-Description:
-The idea behind this app was simple, we saw the usefulness of Bruinwalk as a service when selecting classes, particularly
-the usefulness of the student perspective, and thought that a central place where thoughts about housing being stored in 
-a similar manner would be helpful. It allows the student users to leave reviews for housing in a couple different categories, of which there is more detail in the key features section, and other users can search based off any of the criteria as well as keep their own curated list of housing for ease of use later. The purpose of this is based mostly in the idea that while reddit and other platforms have people talking about it, there is no one consolidated place to see all reviews and opinions.
+## Description
 
-Key Features:
-1) Display Dynamic Data to the User:
-    Students will be able to view and add ratings in the form of star ratings and text reviews. The ratings and number of reviews will change as more ratings/reviews come in, allowing a ever growing database to give more and more helpful advice to future students.
-2)Upload Data from Client to Back-end:
-    Ratings uploaded by users will be saved in the application’s database along with user reviews written with a text form, which will then be consolidated and searchable by the user
-3) Meaningfully Search through Server-side Data:  
-    Users will be able to search for housing with specific filters (e.g. accessibility to food, proximity to UCLA, parking, access to essentials, noise level).
-4) User profiles locked behind google authentication
-    User profiles will be done with Google account authentication via Firebase authentication, which allows for individual students to keep a curated list of housing they like for ease of use in the app, and also prevents any flooding of the site by troll reviews since they must have an account associated.
-5) Unique Feature #2:
-    Users will have a live text search that allows for searching specific housing buildings, this is done so that a student will not have to search through a list if they know exactly what they are looking for and can instead find directly what people think about a specific housing option
-Unique Feature #3:  
-    Users will be able to save a list of preferred housing arrangements/buildings under their user profiles for ease of access, this was referenced earlier since it is enabled by google authentication, the purpose of this list will be for students who want to prioritize certain housing options on the app but hate UCLA housing app UI which is particularly bad.
+Similar to how Bruinwalk is a service for selecting classes and professors, particularly
+through a student-community perspective, this app serves as a service for rating and selecting on-campus housing in UCLA. Users are able to leave reviews for housing in a couple different categories, of which there is more detail in the key features section, and other users can search based off any of the criteria as well as keep their own curated list of housing for ease of use later. The purpose of this app is also based on the fact that while platforms such as Reddit have students talking about housing, there is no one consolidated place to see all reviews and ratings.
+
+
+## Key Features
+
+Key features as mentioned in the project assignment spec.
+
+### 1) Display Dynamic Data to the User:
+    Users will be able to view and add ratings in the form of star ratings and text reviews. The ratings and number of reviews will change as more ratings/reviews come in, allowing a ever growing database to give more and more helpful advice to future students. Furthermore, users who log in can generate multiple lists of preferred housing that they might like. Some pages will display different elements based on whether a user is logged in or not.
+    
+### 2) Upload Data from Client to Back-end:
+
+    Ratings uploaded by users will be saved in the application’s database along with user reviews written with a text form. The preferred housing lists created/modified by users will also be uploaded/called by and from the database.
+    
+### 3) Meaningfully Search through Server-side Data: 
+
+    Users will be able to search for housing with specific filters (e.g. accessibility to food, proximity to UCLA, parking, access to essentials, noise level). Not only that, but users can also look up housing names through the search bar, where clicking a result takes the user to the building's page.
+    
+### 4) Unique Feature #1:
+
+    User profiles will be done with email/password authentication via Firebase authentication, which allows for individual students to keep a curated list of housing they like for ease of use in the app, and also prevents any flooding of the site by troll reviews, as users must have an account in order to leave a review. Any user, logged in or not, however, will be able to view the pages in this application.
+    
+### 5) Unique Feature #2:
+
+    Users will have a live text search that allows for searching specific housing buildings, this is done so that a student will not have to search through a list if they know exactly what they are looking for and can instead find directly what people think about a specific housing option. On the review side of the application, users can submit a text review, a review of ratings (i.e. rating from 1-5), or both.
+    
+### 6) Unique Feature #3:  
+
+    Users will be able to save a list of preferred housing buildings under their user profiles, enabled by google authentication. Users can modify any list that they may have already created, adding or removing items from said list. They can also create new lists, and clicking on any housing name in the list will take the user to a new tab which navigates to that housing name's page.
