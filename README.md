@@ -1,5 +1,5 @@
-# CS 35L Final Project - RateMyResidential
-Winter 2022 Web application project for rating and viewing on-campus residential dorms in UCLA.
+# RateMyResidential - CS 35L Final Project (Winter 2022)
+A web application project for rating and viewing on-campus residential dorms in UCLA.
 The frontend was built with React with Firebase as the backend for the database, user
 authentication, and hosting.
 
