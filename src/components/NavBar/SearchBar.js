@@ -83,7 +83,7 @@ const SearchBar = ({ titles }) => {
                     setSearch("");
                     setSearchResults([]);
                     navigate(
-                      "/" + searchResult.replace(" ", "-").toLowerCase()
+                      "/housing/" + searchResult.replace(" ", "-").toLowerCase()
                     );
                   }}
                 >
