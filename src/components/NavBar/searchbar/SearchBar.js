@@ -36,7 +36,10 @@ function SearchBar({ placeholder, data }) {
           type="text"
           placeholder={placeholder}
           value={wordEntered}
-          onChange={handleFilter}
+          onChange={(event) => {
+            event.preventDefault();
+            handleFilter();
+          }}
         />
         <div className="searchIcon">
           {filteredData.length === 0 ? (
