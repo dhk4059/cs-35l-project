@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { db } from "../../util/firebaseConfig";
 import { onValue, ref, orderByChild, query } from "firebase/database";
@@ -32,7 +32,6 @@ const FilteredSearch = () => {
 
   // We use useRef() in order to preserve the reference to initialOrder
   // without creating a new one to avoid chance of mem leak.
-  const orderRef = useRef(initialOrder);
 
   const searchResults = (filter) => {
     setSearchFilter(filter);
@@ -53,11 +52,15 @@ const FilteredSearch = () => {
 
           // look for filter in initialOrder, get the index, and remove the element in filters
           // then replace topFilter with the temp
-          let filters = orderRef;
-          for (let i = 0; i < orderRef.length; i++) {
-            if (searchFilter === orderRef[i][0]) {
-              let temp = orderRef[i];
+          let filters = [];
+          initialOrder.forEach((element) => {
+            filters.push(element);
+          });
+          for (let i = 0; i < initialOrder.length; i++) {
+            if (searchFilter === initialOrder[i][0]) {
+              let temp = initialOrder[i];
               filters.splice(i, 1);
+              // console.log(filters);
               setTopFilter(temp);
               setOrder(filters);
               break;
@@ -96,7 +99,10 @@ const FilteredSearch = () => {
                     <div style={{ borderBottom: "solid 2px" }}>
                       <Link
                         style={{ textDecoration: "none" }}
-                        to={"/housing/" + attr["title"].replace(" ", "-").toLowerCase()}
+                        to={
+                          "/housing/" +
+                          attr["title"].replace(" ", "-").toLowerCase()
+                        }
                       >
                         <h1>{attr["title"]}</h1>
                       </Link>
