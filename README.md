@@ -8,10 +8,10 @@ authentication, and hosting.
 Make sure node.js is installed, and if not, install it here:
 https://nodejs.org/en/
 
-Make sure git is also installed, and if not, install it here:
+Make sure Git is also installed, and if not, install it here:
 https://git-scm.com/downloads
 
-Once Node.js is installed, run the following commands in terminal in order:
+Once Node.js and Git are installed, run the following commands in terminal in order:
 1) git clone https://github.com/dkwack4059/cs-35l-project.git
 2) cd cs-35l-project
 3) npm install
