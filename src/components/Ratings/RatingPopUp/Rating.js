@@ -61,21 +61,21 @@ const Rating = ({ closePopUp, resetView }) => {
         filterDB["essentialsQuality"] = parseFloat(
           data["essentialsQuality"]["ratingSum"] /
             data["essentialsQuality"]["totalReviewers"]
-        ).toFixed(2);
+        ).toFixed(1);
       }
       if (accessibilityToFood !== null) {
         data["foodAccess"]["ratingSum"] += accessibilityToFood;
         data["foodAccess"]["totalReviewers"] += 1;
         filterDB["foodAccess"] = parseFloat(
           data["foodAccess"]["ratingSum"] / data["foodAccess"]["totalReviewers"]
-        ).toFixed(2);
+        ).toFixed(1);
       }
       if (noiseLevel !== null) {
         data["noiseLevel"]["ratingSum"] += noiseLevel;
         data["noiseLevel"]["totalReviewers"] += 1;
         filterDB["noiseLevel"] = parseFloat(
           data["noiseLevel"]["ratingSum"] / data["noiseLevel"]["totalReviewers"]
-        ).toFixed(2);
+        ).toFixed(1);
       }
       if (overallRating !== null) {
         data["overallRating"]["ratingSum"] += overallRating;
@@ -83,7 +83,7 @@ const Rating = ({ closePopUp, resetView }) => {
         filterDB["overallRating"] = parseFloat(
           data["overallRating"]["ratingSum"] /
             data["overallRating"]["totalReviewers"]
-        ).toFixed(2);
+        ).toFixed(1);
       }
       if (proximityToParking !== null) {
         data["parkingProximity"]["ratingSum"] += proximityToParking;
@@ -91,7 +91,7 @@ const Rating = ({ closePopUp, resetView }) => {
         filterDB["parkingProximity"] = parseFloat(
           data["parkingProximity"]["ratingSum"] /
             data["parkingProximity"]["totalReviewers"]
-        ).toFixed(2);
+        ).toFixed(1);
       }
       if (proximityToCampus !== null) {
         data["uclaProximity"]["ratingSum"] += proximityToCampus;
@@ -99,7 +99,7 @@ const Rating = ({ closePopUp, resetView }) => {
         filterDB["uclaProximity"] = parseFloat(
           data["uclaProximity"]["ratingSum"] /
             data["uclaProximity"]["totalReviewers"]
-        ).toFixed(2);
+        ).toFixed(1);
       }
     });
     update(ref(db, "ratings/" + params.id), data);

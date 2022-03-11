@@ -38,7 +38,7 @@ const DiningRatingPlacard = ({ diningData }) => {
                     parseFloat(
                       diningData["overallRating"]["ratingSum"] /
                         diningData["overallRating"]["totalReviewers"]
-                    ).toFixed(2)
+                    ).toFixed(1)
                   : "Overall Quality: n/a"}
               </h4>
               <br />
@@ -49,7 +49,7 @@ const DiningRatingPlacard = ({ diningData }) => {
                       parseFloat(
                         diningData["busyness"]["ratingSum"] /
                           diningData["busyness"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Busyness: n/a"}
                 </h5>
               </div>
@@ -60,7 +60,7 @@ const DiningRatingPlacard = ({ diningData }) => {
                       parseFloat(
                         diningData["cleanliness"]["ratingSum"] /
                           diningData["cleanliness"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Cleanliness: n/a"}
                 </h5>
               </div>
@@ -71,7 +71,7 @@ const DiningRatingPlacard = ({ diningData }) => {
                       parseFloat(
                         diningData["healthiness"]["ratingSum"] /
                           diningData["healthiness"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Healthiness: n/a"}
                 </h5>
               </div>
@@ -82,7 +82,7 @@ const DiningRatingPlacard = ({ diningData }) => {
                       parseFloat(
                         diningData["portionSize"]["ratingSum"] /
                           diningData["portionSize"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Portion Size: n/a"}
                 </h5>
               </div>
@@ -93,7 +93,7 @@ const DiningRatingPlacard = ({ diningData }) => {
                       parseFloat(
                         diningData["sittingSpace"]["ratingSum"] /
                           diningData["sittingSpace"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Sitting Space: n/a"}
                 </h5>
               </div>

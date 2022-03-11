@@ -38,7 +38,7 @@ const RatingPlacard = ({ housingData }) => {
                     parseFloat(
                       housingData["overallRating"]["ratingSum"] /
                         housingData["overallRating"]["totalReviewers"]
-                    ).toFixed(2)
+                    ).toFixed(1)
                   : "Overall Quality: n/a"}
               </h4>
               <br />
@@ -49,7 +49,7 @@ const RatingPlacard = ({ housingData }) => {
                       parseFloat(
                         housingData["essentialsQuality"]["ratingSum"] /
                           housingData["essentialsQuality"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Quality of Essentials: n/a"}
                 </h5>
               </div>
@@ -60,7 +60,7 @@ const RatingPlacard = ({ housingData }) => {
                       parseFloat(
                         housingData["foodAccess"]["ratingSum"] /
                           housingData["foodAccess"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Access to Food: n/a"}
                 </h5>
               </div>
@@ -71,7 +71,7 @@ const RatingPlacard = ({ housingData }) => {
                       parseFloat(
                         housingData["noiseLevel"]["ratingSum"] /
                           housingData["noiseLevel"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Noise Level: n/a"}
                 </h5>
               </div>
@@ -82,7 +82,7 @@ const RatingPlacard = ({ housingData }) => {
                       parseFloat(
                         housingData["parkingProximity"]["ratingSum"] /
                           housingData["parkingProximity"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Proximity to Parking: n/a"}
                 </h5>
               </div>
@@ -93,7 +93,7 @@ const RatingPlacard = ({ housingData }) => {
                       parseFloat(
                         housingData["uclaProximity"]["ratingSum"] /
                           housingData["uclaProximity"]["totalReviewers"]
-                      ).toFixed(2)
+                      ).toFixed(1)
                     : "Proximity to Campus: n/a"}
                 </h5>
               </div>
