@@ -132,10 +132,12 @@ const AuthService = () => {
         paddingTop: "100px",
       }}
     >
-      <div>
-        <h1 className="text-center">Login</h1>
-        <br />
-        <Row xs="auto" className="justify-content-md-center">
+      <div style={{ paddingTop: "50px" }}>
+        <Row
+          xs="auto"
+          className="justify-content-md-center"
+          style={{ marginBottom: "10px" }}
+        >
           <Col>
             <Button
               onClick={(event) => {
@@ -143,6 +145,12 @@ const AuthService = () => {
                 setChoice(true);
               }}
               variant={isLogin ? "primary" : "outline-primary"}
+              style={{
+                paddingBottom: "0px",
+                paddingTop: "7px",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+              }}
             >
               <h3>Login</h3>
             </Button>
@@ -154,6 +162,12 @@ const AuthService = () => {
                 setChoice(false);
               }}
               variant={!isLogin ? "primary" : "outline-primary"}
+              style={{
+                paddingBottom: "0px",
+                paddingTop: "7px",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+              }}
             >
               <h3>Register</h3>
             </Button>
@@ -166,7 +180,6 @@ const AuthService = () => {
             </h6>
           </div>
         </Row>
-        <br />
         <center>
           <Form>
             <Form.Group className="mb-4">
@@ -188,7 +201,15 @@ const AuthService = () => {
                 }}
               />
             </Form.Group>
-            <Button onClick={authenticate}>
+            <Button
+              onClick={authenticate}
+              style={{
+                paddingBottom: "0px",
+                paddingTop: "7px",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+              }}
+            >
               <h5>{isLogin ? "Login" : "Register"}</h5>
             </Button>
           </Form>

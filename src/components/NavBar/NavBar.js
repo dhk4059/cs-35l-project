@@ -99,8 +99,14 @@ const NavBar = ({ housingTitles }) => {
                         event.preventDefault();
                         user !== null ? logout() : login();
                       }}
+                      style={{
+                        paddingLeft: "13px",
+                        paddingRight: "13px",
+                        paddingTop: "7px",
+                        paddingBottom: "0px",
+                      }}
                     >
-                      <h4>{user !== null ? "Log Out" : "Log in"}</h4>
+                      <h4>{user !== null ? "Log Out" : "Login"}</h4>
                     </Button>
                   )}
                 </Col>
