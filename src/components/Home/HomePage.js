@@ -21,7 +21,7 @@ const HomePage = ({ housingTitles, housingKeys, diningTitles, diningKeys }) => {
   return (
     <center>
       <img
-        src="https://external-preview.redd.it/ZvJ-OZpSX3XQ1DsVzTyJ8qMl0fl95JxOrzma5dvcyJM.jpg?width=640&crop=smart&auto=webp&s=3f1f667ecc3c818a1cbe86897178f8b4c31b0794"
+        src="http://www.housing.ucla.edu/maps/ochmap.jpg"
         alt="Hill map"
         width="960"
         height="650"
