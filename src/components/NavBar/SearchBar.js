@@ -35,6 +35,7 @@ const SearchBar = ({ titles }) => {
           let searchString = event.target.value;
           setSearch(searchString);
           let results = [];
+          searchString = searchString.trim();
           if (searchString.length > 0) {
             searchString = searchString.toLowerCase().trim();
             titles.forEach((title) => {
